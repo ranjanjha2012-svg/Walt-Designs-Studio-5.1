@@ -64,7 +64,7 @@ export default function HomeInquiryForm() {
   };
 
   return (
-    <section className="w-full py-16 px-4 sm:px-6 lg:px-8 relative z-10" id="home-inquiry-section">
+    <section className="w-full max-w-full py-16 px-4 sm:px-6 lg:px-8 relative z-10 overflow-x-hidden" id="home-inquiry-section">
       {/* Absolute ambient gold glow behind form */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-amber-500/5 blur-[120px] rounded-full pointer-events-none" />
 

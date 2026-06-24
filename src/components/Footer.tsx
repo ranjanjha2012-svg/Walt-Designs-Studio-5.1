@@ -169,15 +169,6 @@ export default function Footer() {
         </div>
 
       </div>
-
-      {/* Fancy Marquee below footer across all pages */}
-      <div className="w-full bg-[#1A0E05] border-t border-[#B3923B]/40 py-3 relative z-10 select-none overflow-hidden" id="fancy-marquee-bar">
-        <div className="absolute inset-y-0 left-0 w-8 bg-gradient-to-r from-[#1A0E05] to-transparent z-20 pointer-events-none" />
-        <div className="absolute inset-y-0 right-0 w-8 bg-gradient-to-l from-[#1A0E05] to-transparent z-20 pointer-events-none" />
-        <marquee direction="left" scrollamount="6" className="text-[#F3E5AB] font-mono text-xs sm:text-sm tracking-[0.1em] font-extrabold uppercase block">
-          ✦ Welcome to Walt Designs & Growth Agency ✦ Deliver exquisite outcomes with zero lag ✦ Pan-India integration ✦ Web Designing & Custom Software Development ✦ Professional Resume & CV Making ✦ High CTR Thumbnail & Premium Video Editing ✦ Government Licence & Forms Registration ✦
-        </marquee>
-      </div>
     </footer>
   );
 }

@@ -25,7 +25,7 @@ export default function App() {
   const logoUrl = "https://i.ibb.co/rKxc0kTs/Whats-App-Image-2026-06-23-at-14-27-06.jpg";
 
   return (
-    <div className="bg-[#8C1A33] font-sans min-h-screen text-slate-100 flex flex-col justify-between relative" id="home-page-view">
+    <div className="bg-[#8C1A33] font-sans min-h-screen text-slate-100 flex flex-col justify-between relative w-full max-w-full overflow-x-hidden" id="home-page-view">
       
       {/* Light Wine page background accent highlight in deep page areas */}
       <div className="absolute top-[100vh] left-0 right-0 h-[600px] pointer-events-none overflow-hidden z-0">
@@ -37,7 +37,7 @@ export default function App() {
       {/* Redesigned Premium Hero Section - Content-Adaptive to Remove Spacing Gaps */}
       <section 
         id="hero-section" 
-        className="relative w-full min-h-screen bg-gradient-to-br from-[#021B34] via-[#032B4E] to-[#063E63] overflow-hidden flex flex-col justify-center border-b border-cyan-950"
+        className="relative w-full max-w-full min-h-screen bg-gradient-to-br from-[#021B34] via-[#032B4E] to-[#063E63] overflow-hidden flex flex-col justify-center border-b border-cyan-950"
       >
         {/* Subtle radial gradients for extra depth */}
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(10,108,154,0.18)_0%,rgba(3,43,78,0)_70%)] pointer-events-none z-0" stroke="none" />
@@ -91,6 +91,15 @@ export default function App() {
             <circle cx="300" cy="160" r="3" fill="#22d3ee" />
           </g>
         </svg>
+
+        {/* Fancy Marquee below header at hero, between Elite Creative Agency and header */}
+        <div className="w-full bg-[#1A0E05] border-b border-[#B3923B]/35 py-3 relative z-10 select-none overflow-hidden" id="fancy-marquee-bar-hero">
+          <div className="absolute inset-y-0 left-0 w-8 bg-gradient-to-r from-[#1A0E05] to-transparent z-20 pointer-events-none" />
+          <div className="absolute inset-y-0 right-0 w-8 bg-gradient-to-l from-[#1A0E05] to-transparent z-20 pointer-events-none" />
+          <marquee direction="left" scrollamount="6" className="text-[#F3E5AB] font-mono text-xs sm:text-sm tracking-[0.1em] font-extrabold uppercase block">
+            ✦ Welcome to Walt Designs & Growth Agency ✦ Deliver exquisite outcomes with zero lag ✦ Pan-India integration ✦ Web Designing & Custom Software Development ✦ Professional Resume & CV Making ✦ High CTR Thumbnail & Premium Video Editing ✦ Government Licence & Forms Registration ✦
+          </marquee>
+        </div>
 
         {/* Content Box aligned to Layout grid limits - Two-column immersive SaaS-style layout */}
         <div className="w-full max-w-none px-4 sm:px-10 md:px-12 lg:px-[70px] py-12 md:py-20 relative z-10 flex flex-col md:flex-row justify-between items-center gap-12 lg:gap-[80px]" id="hero-grid-container">
@@ -269,10 +278,10 @@ export default function App() {
       </section>
 
       {/* Main Container below the Full Screen Hero (Using original boxed grid padding for page segments) */}
-      <main className="flex-1 relative z-10 max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-8" id="home-main-section">
+      <main className="flex-1 relative z-10 max-w-7xl mx-auto w-full max-w-full px-4 sm:px-6 lg:px-8 py-8 overflow-x-hidden" id="home-main-section">
         
         {/* Core Business Values Banner */}
-        <section className="py-12 bg-black/10 border-y border-white/5 my-12 rounded-3xl" id="values-section">
+        <section className="py-12 bg-black/10 border-y border-white/5 my-12 rounded-3xl w-full max-w-full overflow-x-hidden" id="values-section">
           <div className="max-w-6xl mx-auto px-4">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {values.map((v, idx) => {
@@ -298,7 +307,7 @@ export default function App() {
         </section>
 
         {/* Portfolio Showcase Block */}
-        <section className="py-16 space-y-10" id="portfolio-section">
+        <section className="py-16 space-y-10 w-full max-w-full overflow-x-hidden" id="portfolio-section">
           <div className="text-center space-y-2 max-w-2xl mx-auto">
             <span className="text-xs uppercase text-cyan-400 tracking-widest font-bold">Exquisite Outcomes</span>
             <h2 className="text-3xl sm:text-4xl font-bold text-white">Featured Agency Showcase</h2>
@@ -308,7 +317,7 @@ export default function App() {
         </section>
 
         {/* FAQ Section */}
-        <section className="py-16 max-w-4xl mx-auto space-y-10" id="faq-section">
+        <section className="py-16 max-w-4xl mx-auto space-y-10 w-full max-w-full overflow-x-hidden" id="faq-section">
           <div className="text-center space-y-2">
             <span className="text-xs uppercase text-cyan-400 tracking-widest font-bold">Answers Secured</span>
             <h2 className="text-3xl font-bold text-white">Frequently Asked Questions</h2>
@@ -352,7 +361,7 @@ export default function App() {
       <HomeInquiryForm />
 
       {/* Premium White-Background Indian Client Testimonial Section */}
-      <section className="w-full bg-white py-20 px-4 sm:px-6 lg:px-8 border-t border-b border-gray-100 relative z-10" id="indian-testimonials">
+      <section className="w-full max-w-full bg-white py-20 px-4 sm:px-6 lg:px-8 border-t border-b border-gray-100 relative z-10 overflow-x-hidden" id="indian-testimonials">
         <div className="max-w-7xl mx-auto">
           
           {/* Header block with Indian Client badges */}
