@@ -1,0 +1,6 @@
+{
+  "name": "Walt Designs & Studio",
+  "description": "A premium & professional multi-page digital agency website for Walt Designs & Studio, featuring a sleek portfolio, services catalog, active client testimonials, dynamic map, and a bespoke AI-powered business goal planner.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
