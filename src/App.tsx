@@ -17,9 +17,24 @@ export default function App() {
   ];
 
   const values = [
-    { title: 'On-time Service', description: 'Strictest compliance to agreed milestone timelines. We respect commitments with zero drag.', icon: Zap },
-    { title: 'Affordable Prices', description: 'World-class premium designs engineered transparently without deep cost barriers.', icon: BadgeCheck },
-    { title: 'Available all over India', description: 'Client nodes established key zones—including NCR and West Bengal headquarters.', icon: Map }
+    { 
+      title: 'On-time Service', 
+      description: 'Strictest compliance to agreed milestone timelines. We respect commitments with zero drag.', 
+      icon: Zap,
+      image: 'https://images.unsplash.com/photo-1508962914676-134849a727f0?auto=format&fit=crop&w=600&q=80' 
+    },
+    { 
+      title: 'Affordable Prices', 
+      description: 'World-class premium designs engineered transparently without deep cost barriers.', 
+      icon: BadgeCheck,
+      image: 'https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=600&q=80' 
+    },
+    { 
+      title: 'Available all over India', 
+      description: 'Client nodes established key zones—including NCR and West Bengal headquarters.', 
+      icon: Map,
+      image: 'https://images.unsplash.com/photo-1524492412937-b28074a5d7da?auto=format&fit=crop&w=600&q=80' 
+    }
   ];
 
   const logoUrl = "https://i.ibb.co/rKxc0kTs/Whats-App-Image-2026-06-23-at-14-27-06.jpg";
@@ -37,7 +52,7 @@ export default function App() {
       {/* Redesigned Premium Hero Section - Content-Adaptive to Remove Spacing Gaps */}
       <section 
         id="hero-section" 
-        className="relative w-full max-w-full min-h-screen bg-gradient-to-br from-[#021B34] via-[#032B4E] to-[#063E63] overflow-hidden flex flex-col justify-center border-b border-cyan-950"
+        className="relative w-full max-w-full min-h-screen bg-gradient-to-br from-[#021B34] via-[#032B4E] to-[#063E63] overflow-hidden flex flex-col justify-start border-b border-cyan-950"
       >
         {/* Subtle radial gradients for extra depth */}
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(10,108,154,0.18)_0%,rgba(3,43,78,0)_70%)] pointer-events-none z-0" stroke="none" />
@@ -93,16 +108,16 @@ export default function App() {
         </svg>
 
         {/* Fancy Marquee below header at hero, between Elite Creative Agency and header */}
-        <div className="w-full bg-[#1A0E05] border-b border-[#B3923B]/35 py-3 relative z-10 select-none overflow-hidden" id="fancy-marquee-bar-hero">
-          <div className="absolute inset-y-0 left-0 w-8 bg-gradient-to-r from-[#1A0E05] to-transparent z-20 pointer-events-none" />
-          <div className="absolute inset-y-0 right-0 w-8 bg-gradient-to-l from-[#1A0E05] to-transparent z-20 pointer-events-none" />
-          <marquee direction="left" scrollamount="6" className="text-[#F3E5AB] font-mono text-xs sm:text-sm tracking-[0.1em] font-extrabold uppercase block">
+        <div className="w-full bg-[#D946EF] border-b border-pink-400/40 py-3 relative z-10 select-none overflow-hidden" id="fancy-marquee-bar-hero">
+          <div className="absolute inset-y-0 left-0 w-12 bg-gradient-to-r from-[#D946EF] to-transparent z-20 pointer-events-none" />
+          <div className="absolute inset-y-0 right-0 w-12 bg-gradient-to-l from-[#D946EF] to-transparent z-20 pointer-events-none" />
+          <marquee direction="left" scrollamount="6" className="text-white font-mono text-xs sm:text-sm tracking-[0.1em] font-extrabold uppercase block">
             ✦ Welcome to Walt Designs & Growth Agency ✦ Deliver exquisite outcomes with zero lag ✦ Pan-India integration ✦ Web Designing & Custom Software Development ✦ Professional Resume & CV Making ✦ High CTR Thumbnail & Premium Video Editing ✦ Government Licence & Forms Registration ✦
           </marquee>
         </div>
 
         {/* Content Box aligned to Layout grid limits - Two-column immersive SaaS-style layout */}
-        <div className="w-full max-w-none px-4 sm:px-10 md:px-12 lg:px-[70px] py-12 md:py-20 relative z-10 flex flex-col md:flex-row justify-between items-center gap-12 lg:gap-[80px]" id="hero-grid-container">
+        <div className="w-full max-w-none px-4 sm:px-10 md:px-12 lg:px-[70px] pt-4 pb-12 md:pt-6 md:pb-20 relative z-10 flex flex-col md:flex-row justify-between items-start gap-12 lg:gap-[80px]" id="hero-grid-container">
           
           {/* Left Text and Stats Col (55% width on desktop) */}
           <div className="flex-1 w-full md:max-w-[55%] space-y-8 relative z-10 text-left flex flex-col items-start justify-center animate-fade-in-up" id="hero-left-col">
@@ -163,7 +178,7 @@ export default function App() {
           </div>
 
           {/* Right Floating Glassmorphism Hero Card with Parallax styling (45% width on desktop) */}
-          <div className="w-full md:w-[420px] lg:w-[460px] xl:w-[480px] md:max-w-none shrink-0 relative animate-float self-center" id="hero-graphic-block">
+          <div className="w-full md:w-[420px] lg:w-[460px] xl:w-[480px] md:max-w-none shrink-0 relative animate-float self-center md:self-start md:mt-0" id="hero-graphic-block">
             {/* Ambient soft glow backdrop */}
             <div className="absolute inset-0 bg-gradient-to-tr from-cyan-400/25 via-[#032B4E]/30 to-transparent rounded-3xl blur-2xl pointer-events-none" />
             
@@ -289,14 +304,30 @@ export default function App() {
                 return (
                   <div 
                     key={idx} 
-                    className="p-6 rounded-2xl bg-[#1A030A]/45 border border-white/5 space-y-4 hover:border-white/10 transition-all text-center md:text-left"
+                    className="p-6 rounded-2xl bg-[#1A030A]/45 border border-white/5 hover:border-white/10 transition-all text-center md:text-left flex flex-col justify-between"
                     id={`value-card-${idx}`}
                   >
-                    <div className="inline-flex p-3 rounded-xl bg-white/5 border border-white/10 mx-auto md:mx-0">
-                      <IconComponent className="w-6 h-6 text-cyan-400" />
-                    </div>
-                    <div className="space-y-1.5">
-                      <h3 className="font-semibold text-lg text-white">{v.title}</h3>
+                    <div className="space-y-4">
+                      {/* Related Category Image */}
+                      {v.image && (
+                        <div className="relative w-full h-40 rounded-xl overflow-hidden border border-white/10 shadow-md">
+                          <img 
+                            src={v.image} 
+                            alt={v.title} 
+                            className="w-full h-full object-cover object-center transform hover:scale-105 transition-all duration-500"
+                            referrerPolicy="no-referrer"
+                          />
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/55 to-transparent" />
+                        </div>
+                      )}
+                      
+                      <div className="flex items-center space-x-3 justify-center md:justify-start">
+                        <div className="inline-flex p-2.5 rounded-xl bg-white/5 border border-white/10">
+                          <IconComponent className="w-5 h-5 text-cyan-400" />
+                        </div>
+                        <h3 className="font-semibold text-lg text-white">{v.title}</h3>
+                      </div>
+                      
                       <p className="text-sm text-slate-300 leading-relaxed">{v.description}</p>
                     </div>
                   </div>
@@ -317,35 +348,35 @@ export default function App() {
         </section>
 
         {/* FAQ Section */}
-        <section className="py-16 max-w-4xl mx-auto space-y-10 w-full max-w-full overflow-x-hidden" id="faq-section">
+        <section className="py-16 px-6 sm:px-12 bg-[#5B21B6] rounded-3xl space-y-10 w-full max-w-full overflow-x-hidden border border-violet-400/35 shadow-[0_15px_40px_rgba(91,33,182,0.35)] my-12" id="faq-section">
           <div className="text-center space-y-2">
-            <span className="text-xs uppercase text-cyan-400 tracking-widest font-bold">Answers Secured</span>
-            <h2 className="text-3xl font-bold text-white">Frequently Asked Questions</h2>
-            <p className="text-slate-350 text-sm">We believe in transparent operational parameters. Contact us for outstanding queries.</p>
+            <span className="text-xs uppercase text-violet-200 tracking-widest font-bold">Answers Secured</span>
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-white">Frequently Asked Questions</h2>
+            <p className="text-violet-100/90 text-sm max-w-2xl mx-auto">We believe in transparent operational parameters. Contact us for outstanding queries.</p>
           </div>
 
           <div className="space-y-4" id="faq-accordion">
-            {FAQS_DATA.map((faq) => {
+            {FAQS_DATA.map((faq, idx) => {
               const isOpen = openFaq === faq.id;
               return (
                 <div 
                   key={faq.id} 
-                  className="rounded-2xl bg-black/20 border border-white/5 overflow-hidden transition-all duration-300"
+                  className="rounded-2xl bg-white/10 border border-white/15 overflow-hidden transition-all duration-300 shadow-sm"
                   id={`faq-item-${faq.id}`}
                 >
                   <button
                     onClick={() => setOpenFaq(isOpen ? null : faq.id)}
-                    className="w-full flex items-center justify-between p-6 text-left focus:outline-none hover:bg-white/5 transition-colors cursor-pointer"
+                    className="w-full flex items-center justify-between p-6 text-left focus:outline-none hover:bg-white/10 transition-colors cursor-pointer"
                   >
-                    <span className="font-semibold text-white pr-4">{faq.question}</span>
+                    <span className="font-bold text-white pr-4">S.No. {idx + 1}: {faq.question}</span>
                     {isOpen ? (
-                      <ChevronUp className="w-5 h-5 text-cyan-400 shrink-0" />
+                      <ChevronUp className="w-5 h-5 text-white shrink-0" />
                     ) : (
-                      <ChevronDown className="w-5 h-5 text-slate-500 shrink-0" />
+                      <ChevronDown className="w-5 h-5 text-violet-200 shrink-0" />
                     )}
                   </button>
                   {isOpen && (
-                    <div className="p-6 pt-0 border-t border-white/5 text-sm text-slate-350 leading-relaxed font-sans transition-all animate-fadeIn">
+                    <div className="p-6 pt-0 border-t border-white/10 text-sm text-violet-50 leading-relaxed font-sans transition-all animate-fadeIn">
                       {faq.answer}
                     </div>
                   )}
