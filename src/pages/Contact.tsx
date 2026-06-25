@@ -80,22 +80,22 @@ export default function Contact() {
   };
 
   return (
-    <div className="bg-[#8C1A33] font-sans min-h-screen text-slate-100 flex flex-col justify-between" id="contact-page-view">
+    <div className="bg-[#4C0519] font-sans min-h-screen text-slate-100 flex flex-col justify-between" id="contact-page-view">
       <Header />
 
       {/* Background ambient spots */}
       <div className="absolute top-0 left-0 right-0 h-[500px] pointer-events-none overflow-hidden z-0">
-        <div className="absolute top-10 right-[10%] w-[350px] h-[350px] bg-amber-500/5 blur-[120px] rounded-full animate-pulseGlow" />
-        <div className="absolute top-30 left-[15%] w-[300px] h-[300px] bg-amber-500/3 blur-[90px] rounded-full" />
+        <div className="absolute top-10 right-[10%] w-[350px] h-[350px] bg-red-500/5 blur-[120px] rounded-full animate-pulseGlow" />
+        <div className="absolute top-30 left-[15%] w-[300px] h-[300px] bg-red-500/3 blur-[90px] rounded-full" />
       </div>
 
       <main className="flex-grow relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-24" id="contact-main-section">
         
         {/* Get in touch introductory heading */}
         <section className="max-w-3xl space-y-4">
-          <span className="font-mono text-xs uppercase text-amber-500 tracking-widest font-bold">Inquiry Management</span>
+          <span className="font-mono text-xs uppercase text-amber-400 tracking-widest font-bold">Inquiry Management</span>
           <h1 className="font-display font-medium text-4xl sm:text-5xl text-white">Get In Touch With Us</h1>
-          <p className="text-neutral-400 text-sm sm:text-base leading-relaxed">
+          <p className="text-red-100/80 text-sm sm:text-base leading-relaxed">
             Fill up our enquiry form, view our direct contact channels, or consult our automated AI planner model to design a comprehensive business blueprint. We will review your concepts and respond on time.
           </p>
         </section>
@@ -108,7 +108,7 @@ export default function Contact() {
             
             <div className="space-y-4">
               <h3 className="font-display font-medium text-xl text-white">Direct Agency Access</h3>
-              <p className="text-xs text-neutral-500 leading-relaxed font-mono">
+              <p className="text-xs text-red-200/70 leading-relaxed font-mono">
                 Consult our direct channels to bypass standard queues for instant coordination.
               </p>
             </div>
@@ -116,129 +116,129 @@ export default function Contact() {
             {/* Structured channel list */}
             <div className="space-y-4" id="channels-list">
               
-              <div className="flex items-start space-x-4 bg-[#0F0F0F] p-5 rounded-2xl border border-neutral-800 hover:border-amber-500/10 transition-all">
-                <div className="p-3.5 rounded-xl bg-[#0A0A0A] border border-neutral-850 text-amber-500">
+              <div className="flex items-start space-x-4 bg-[#0B1D33] p-5 rounded-2xl border border-blue-900/40 hover:border-blue-500/20 transition-all shadow-md">
+                <div className="p-3.5 rounded-xl bg-[#051124] border border-blue-900/50 text-cyan-400">
                   <User className="w-5 h-5" />
                 </div>
                 <div className="space-y-1">
-                  <span className="text-[10px] text-neutral-500 font-mono uppercase">FOUNDER & DIRECTOR</span>
-                  <p className="text-sm font-semibold text-white">Priyanshu Kumar</p>
-                  <p className="text-xs text-neutral-400">Primary operational signatory for Walt Designs & Studio.</p>
+                  <span className="text-[10px] text-cyan-300 font-mono uppercase font-bold">FOUNDER & DIRECTOR</span>
+                  <p className="text-sm font-bold text-white">Priyanshu Kumar</p>
+                  <p className="text-xs text-blue-100/90">Primary operational signatory for Walt Designs & Studio.</p>
                 </div>
               </div>
 
-              <div className="flex items-start space-x-4 bg-[#0F0F0F] p-5 rounded-2xl border border-neutral-800 hover:border-amber-500/10 transition-all">
-                <div className="p-3.5 rounded-xl bg-[#0A0A0A] border border-neutral-850 text-amber-500">
+              <div className="flex items-start space-x-4 bg-[#0B1D33] p-5 rounded-2xl border border-blue-900/40 hover:border-blue-500/20 transition-all shadow-md">
+                <div className="p-3.5 rounded-xl bg-[#051124] border border-blue-900/50 text-cyan-400">
                   <Phone className="w-5 h-5" />
                 </div>
                 <div className="space-y-1">
-                  <span className="text-[10px] text-neutral-500 font-mono uppercase">EXECUTIVE HOTLINE</span>
-                  <a href="tel:+917303942175" className="text-sm font-semibold text-white hover:text-amber-450 transition-colors block">
+                  <span className="text-[10px] text-cyan-300 font-mono uppercase font-bold">EXECUTIVE HOTLINE</span>
+                  <a href="tel:+917303942175" className="text-sm font-extrabold text-white hover:text-cyan-300 transition-colors block">
                     +91 7303942175
                   </a>
-                  <p className="text-xs text-neutral-400">Available regarding emergency web setup or urgent registration assistance.</p>
+                  <p className="text-xs text-blue-100/90">Available regarding emergency web setup or urgent registration assistance.</p>
                 </div>
               </div>
 
-              <div className="flex items-start space-x-4 bg-[#0F0F0F] p-5 rounded-2xl border border-neutral-800 hover:border-amber-500/10 transition-all">
-                <div className="p-3.5 rounded-xl bg-[#0A0A0A] border border-neutral-850 text-amber-500">
+              <div className="flex items-start space-x-4 bg-[#0B1D33] p-5 rounded-2xl border border-blue-900/40 hover:border-blue-500/20 transition-all shadow-md">
+                <div className="p-3.5 rounded-xl bg-[#051124] border border-blue-900/50 text-cyan-400">
                   <Mail className="w-5 h-5" />
                 </div>
                 <div className="space-y-1">
-                  <span className="text-[10px] text-neutral-500 font-mono uppercase">CREATIVE DIRECTORY</span>
-                  <a href="mailto:waltdesignsstudio@gmail.com" className="text-sm font-semibold text-white hover:text-amber-450 transition-colors block">
+                  <span className="text-[10px] text-cyan-300 font-mono uppercase font-bold">CREATIVE DIRECTORY</span>
+                  <a href="mailto:waltdesignsstudio@gmail.com" className="text-sm font-extrabold text-white hover:text-cyan-300 transition-colors block">
                     waltdesignsstudio@gmail.com
                   </a>
-                  <p className="text-xs text-neutral-400">Checked continuously. Submit briefs directly to preserve high resolution.</p>
+                  <p className="text-xs text-blue-100/90">Checked continuously. Submit briefs directly to preserve high resolution.</p>
                 </div>
               </div>
 
-              <div className="flex items-start space-x-4 bg-[#0F0F0F] p-5 rounded-2xl border border-neutral-800 hover:border-amber-500/10 transition-all">
-                <div className="p-3.5 rounded-xl bg-[#0A0A0A] border border-neutral-850 text-amber-500">
+              <div className="flex items-start space-x-4 bg-[#0B1D33] p-5 rounded-2xl border border-blue-900/40 hover:border-blue-500/20 transition-all shadow-md">
+                <div className="p-3.5 rounded-xl bg-[#051124] border border-blue-900/50 text-cyan-400">
                   <MapPin className="w-5 h-5" />
                 </div>
                 <div className="space-y-1">
-                  <span className="text-[10px] text-neutral-500 font-mono uppercase">HEAD OFFICE LOCATION</span>
-                  <p className="text-sm font-semibold text-white">West Bengal, India</p>
-                  <p className="text-xs text-neutral-400">Direct physical registrations mapped and filed nationally.</p>
+                  <span className="text-[10px] text-cyan-300 font-mono uppercase font-bold">HEAD OFFICE LOCATION</span>
+                  <p className="text-sm font-bold text-white">West Bengal, India</p>
+                  <p className="text-xs text-blue-100/90">Direct physical registrations mapped and filed nationally.</p>
                 </div>
               </div>
 
             </div>
 
             {/* Response speed metrics banner */}
-            <div className="p-4 rounded-xl bg-amber-950/20 border border-amber-500/10 text-xs flex items-center space-x-3 text-neutral-400">
-              <Clock className="w-4.5 h-4.5 text-amber-500 shrink-0" />
-              <span>We guarantees first response regarding inquiry forms in <strong className="text-amber-400 font-bold">under 12 hours</strong>.</span>
+            <div className="p-4 rounded-xl bg-[#0B1D33]/60 border border-blue-900/40 text-xs flex items-center space-x-3 text-blue-100 shadow-md">
+              <Clock className="w-4.5 h-4.5 text-cyan-400 shrink-0" />
+              <span>We guarantees first response regarding inquiry forms in <strong className="text-cyan-300 font-bold">under 12 hours</strong>.</span>
             </div>
 
           </div>
 
           {/* Right Block: Form or Success */}
-          <div className="lg:col-span-7 bg-[#0F0F0F] rounded-3xl border border-neutral-800 p-6 sm:p-10 relative overflow-hidden shadow-2xl" id="contact-form-panel">
+          <div className="lg:col-span-7 bg-[#0B1D33] rounded-3xl border border-blue-900/40 p-6 sm:p-10 relative overflow-hidden shadow-2xl" id="contact-form-panel">
             
             {!submitted ? (
               <form onSubmit={handleSubmit} className="space-y-6" id="inquiry-form">
-                <div className="space-y-2 border-b border-neutral-850 pb-4">
-                  <h3 className="font-display font-medium text-xl text-white">Integrated inquiry form</h3>
-                  <p className="text-xs text-neutral-400">Provide direct metrics regarding your requirements to trigger swift scoping.</p>
+                <div className="space-y-2 border-b border-blue-900/30 pb-4">
+                  <h3 className="font-display font-medium text-xl text-white">Integrated Inquiry Form</h3>
+                  <p className="text-xs text-blue-200/80">Provide direct metrics regarding your requirements to trigger swift scoping.</p>
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                   <div className="space-y-2">
-                    <label className="block text-xs font-semibold uppercase tracking-wider text-neutral-450 font-mono">Your Name *</label>
+                    <label className="block text-xs font-bold uppercase tracking-wider text-cyan-300 font-mono">Your Name *</label>
                     <input
                       type="text"
                       required
                       placeholder="Priya Patel"
                       value={name}
                       onChange={(e) => setName(e.target.value)}
-                      className="w-full px-4 py-3 bg-[#0A0A0A] border border-neutral-800 rounded-xl text-sm text-white focus:outline-none focus:border-amber-500 transition-colors"
+                      className="w-full px-4 py-3 bg-[#051124] border border-blue-900/50 rounded-xl text-sm text-white focus:outline-none focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400 transition-colors"
                     />
                   </div>
 
                   <div className="space-y-2">
-                    <label className="block text-xs font-semibold uppercase tracking-wider text-neutral-450 font-mono">E-Mail Address *</label>
+                    <label className="block text-xs font-bold uppercase tracking-wider text-cyan-300 font-mono">E-Mail Address *</label>
                     <input
                       type="email"
                       required
                       placeholder="priya@domain.com"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
-                      className="w-full px-4 py-3 bg-[#0A0A0A] border border-neutral-800 rounded-xl text-sm text-white focus:outline-none focus:border-amber-500 transition-colors"
+                      className="w-full px-4 py-3 bg-[#051124] border border-blue-900/50 rounded-xl text-sm text-white focus:outline-none focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400 transition-colors"
                     />
                   </div>
 
                   <div className="space-y-2">
-                    <label className="block text-xs font-semibold uppercase tracking-wider text-neutral-450 font-mono">Contact Phone *</label>
+                    <label className="block text-xs font-bold uppercase tracking-wider text-cyan-300 font-mono">Contact Phone *</label>
                     <input
                       type="tel"
                       required
                       placeholder="+91 12345 67890"
                       value={phone}
                       onChange={(e) => setPhone(e.target.value)}
-                      className="w-full px-4 py-3 bg-[#0A0A0A] border border-neutral-800 rounded-xl text-sm text-white focus:outline-none focus:border-amber-500 transition-colors"
+                      className="w-full px-4 py-3 bg-[#051124] border border-blue-900/50 rounded-xl text-sm text-white focus:outline-none focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400 transition-colors"
                     />
                   </div>
 
                   <div className="space-y-2">
-                    <label className="block text-xs font-semibold uppercase tracking-wider text-neutral-450 font-mono">Location Area / Region *</label>
+                    <label className="block text-xs font-bold uppercase tracking-wider text-cyan-300 font-mono">Location Area / Region *</label>
                     <input
                       type="text"
                       required
                       placeholder="e.g. West Bengal, Delhi NCR, Mumbai"
                       value={area}
                       onChange={(e) => setArea(e.target.value)}
-                      className="w-full px-4 py-3 bg-[#0A0A0A] border border-neutral-800 rounded-xl text-sm text-white focus:outline-none focus:border-amber-500 transition-colors"
+                      className="w-full px-4 py-3 bg-[#051124] border border-blue-900/50 rounded-xl text-sm text-white focus:outline-none focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400 transition-colors"
                     />
                   </div>
 
                   <div className="space-y-2 sm:col-span-2">
-                    <label className="block text-xs font-semibold uppercase tracking-wider text-neutral-450 font-mono">CHOSEN AGENCY DIVISION *</label>
+                    <label className="block text-xs font-bold uppercase tracking-wider text-cyan-300 font-mono">CHOSEN AGENCY DIVISION *</label>
                     <select
                       value={service}
                       onChange={(e) => setService(e.target.value)}
-                      className="w-full px-4 py-3 bg-[#0A0A0A] border border-neutral-800 rounded-xl text-sm text-white focus:outline-none focus:border-amber-500 transition-colors appearance-none"
+                      className="w-full px-4 py-3 bg-[#051124] border border-blue-900/50 rounded-xl text-sm text-white focus:outline-none focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400 transition-colors appearance-none"
                     >
                       <option value="web-design">Web Designing & Custom Software Development</option>
                       <option value="resume-cv">Professional Resume & CV Making</option>
@@ -251,33 +251,33 @@ export default function Contact() {
 
                   {service === 'others' && (
                     <div className="space-y-2 sm:col-span-2 animate-fadeIn">
-                      <label className="block text-xs font-semibold uppercase tracking-wider text-neutral-450 font-mono">Please specify your custom division requirement *</label>
+                      <label className="block text-xs font-bold uppercase tracking-wider text-cyan-300 font-mono">Please specify your custom division requirement *</label>
                       <input
                         type="text"
                         required
                         placeholder="e.g. Dynamic branding, logo designing, app UI, etc."
                         value={customService}
                         onChange={(e) => setCustomService(e.target.value)}
-                        className="w-full px-4 py-3 bg-[#0A0A0A] border border-neutral-800 rounded-xl text-sm text-white focus:outline-none focus:border-amber-500 transition-colors"
+                        className="w-full px-4 py-3 bg-[#051124] border border-blue-900/50 rounded-xl text-sm text-white focus:outline-none focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400 transition-colors"
                       />
                     </div>
                   )}
                 </div>
 
                 <div className="space-y-2">
-                  <label className="block text-xs font-semibold uppercase tracking-wider text-neutral-450 font-mono">Requirement Specifications *</label>
+                  <label className="block text-xs font-bold uppercase tracking-wider text-cyan-300 font-mono">Requirement Specifications *</label>
                   <textarea
                     required
                     rows={4}
                     placeholder="Describe budget metrics, visual style, or specific local registration forms you require..."
                     value={details}
                     onChange={(e) => setDetails(e.target.value)}
-                    className="w-full px-4 py-3 bg-[#0A0A0A] border border-neutral-800 rounded-xl text-sm text-white focus:outline-none focus:border-amber-500 transition-colors resize-none"
+                    className="w-full px-4 py-3 bg-[#051124] border border-blue-900/50 rounded-xl text-sm text-white focus:outline-none focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400 transition-colors resize-none"
                   />
                 </div>
 
                 {errorStr && (
-                  <p className="text-xs text-red-400 font-mono bg-red-950/20 p-3 rounded-lg border border-red-500/10">
+                  <p className="text-xs text-red-300 font-mono bg-red-950/40 p-3 rounded-lg border border-red-500/20">
                     {errorStr}
                   </p>
                 )}
@@ -285,7 +285,7 @@ export default function Contact() {
                 <button
                   type="submit"
                   disabled={submitting}
-                  className="w-full inline-flex items-center justify-center space-x-2 py-4 px-6 rounded-xl bg-gradient-to-r from-amber-600 to-amber-500 hover:from-amber-500 hover:to-amber-400 text-black font-display font-bold text-sm tracking-wide transition-all shadow-lg hover:scale-[1.01] active:scale-95 disabled:opacity-50 cursor-pointer"
+                  className="w-full inline-flex items-center justify-center space-x-2 py-4 px-6 rounded-xl bg-gradient-to-r from-cyan-500 to-cyan-400 hover:from-cyan-400 hover:to-cyan-300 text-black font-display font-bold text-sm tracking-wide transition-all shadow-lg hover:scale-[1.01] active:scale-95 disabled:opacity-50 cursor-pointer"
                   id="submit-inquiry-trigger"
                 >
                   <Send className="w-4 h-4 text-black" />
@@ -299,19 +299,19 @@ export default function Contact() {
                 </div>
                 <div className="space-y-2">
                   <h3 className="font-display font-medium text-2xl text-white">Brief Successfully Transmitted</h3>
-                  <p className="text-sm text-neutral-400 max-w-md mx-auto">
+                  <p className="text-sm text-blue-100 max-w-md mx-auto">
                     Excellent, {name}. Your details have been secured in our local database. Founder Priyanshu Kumar will coordinate your scope proposal shortly.
                   </p>
                 </div>
 
-                <div className="bg-[#0A0A0A] border border-neutral-800 p-4 rounded-xl font-mono text-xs text-center space-y-1">
-                  <span className="text-neutral-500 uppercase block text-[10px]">Scoping Authorization ID</span>
-                  <span className="text-amber-500 font-bold text-base tracking-widest">{ticketNumber}</span>
+                <div className="bg-[#051124] border border-blue-900/50 p-4 rounded-xl font-mono text-xs text-center space-y-1">
+                  <span className="text-cyan-400 uppercase block text-[10px]">Scoping Authorization ID</span>
+                  <span className="text-cyan-300 font-bold text-base tracking-widest">{ticketNumber}</span>
                 </div>
 
                 <button
                   onClick={handleResetForm}
-                  className="px-6 py-2.5 bg-[#121212] border border-neutral-800 text-neutral-300 hover:text-white rounded-xl text-xs font-semibold tracking-wide hover:bg-[#1C1C1C] transition-all cursor-pointer"
+                  className="px-6 py-2.5 bg-[#051124] border border-blue-900/50 text-blue-100 hover:text-white rounded-xl text-xs font-semibold tracking-wide hover:bg-[#071833] transition-all cursor-pointer"
                 >
                   Submit Alternative Proposal
                 </button>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Portfolio from './components/Portfolio';
@@ -9,11 +9,40 @@ import { ChevronDown, ChevronUp, Sparkles, TrendingUp, ArrowRight, Zap, BadgeChe
 
 export default function App() {
   const [openFaq, setOpenFaq] = useState<string | null>('faq-1');
+  const [showBackToTop, setShowBackToTop] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const heroSection = document.getElementById('hero-section');
+      if (heroSection) {
+        const heroHeight = heroSection.offsetHeight;
+        if (window.scrollY > heroHeight - 100) {
+          setShowBackToTop(true);
+        } else {
+          setShowBackToTop(false);
+        }
+      } else {
+        if (window.scrollY > 500) {
+          setShowBackToTop(true);
+        } else {
+          setShowBackToTop(false);
+        }
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
 
   const stats = [
-    { value: '120+', label: 'Delighted Customers' },
+    { value: '120+', label: 'Delighted customers' },
     { value: '80+', label: 'Completed Projects' },
-    { value: '4.1', label: 'Average Rating ★' }
+    { value: '4.1', label: 'Avg Rating' },
+    { value: '24/7', label: 'Backend Team' }
   ];
 
   const values = [
@@ -34,6 +63,12 @@ export default function App() {
       description: 'Client nodes established key zones—including NCR and West Bengal headquarters.', 
       icon: Map,
       image: 'https://images.unsplash.com/photo-1524492412937-b28074a5d7da?auto=format&fit=crop&w=600&q=80' 
+    },
+    {
+      title: 'High quality Service in budget',
+      description: 'Exquisite elite-tier engineering and creative outcomes tailored to clear pricing targets.',
+      icon: Sparkles,
+      image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=600&q=80'
     }
   ];
 
@@ -117,24 +152,24 @@ export default function App() {
         </div>
 
         {/* Content Box aligned to Layout grid limits - Two-column immersive SaaS-style layout */}
-        <div className="w-full max-w-none px-4 sm:px-10 md:px-12 lg:px-[70px] pt-4 pb-12 md:pt-6 md:pb-20 relative z-10 flex flex-col md:flex-row justify-between items-start gap-12 lg:gap-[80px]" id="hero-grid-container">
+        <div className="w-full max-w-none px-4 sm:px-10 md:px-12 lg:px-[70px] pt-1 pb-12 md:pt-2 md:pb-16 relative z-10 flex flex-col md:flex-row justify-between items-start gap-8 lg:gap-[80px]" id="hero-grid-container">
           
           {/* Left Text and Stats Col (55% width on desktop) */}
-          <div className="flex-1 w-full md:max-w-[55%] space-y-8 relative z-10 text-left flex flex-col items-start justify-center animate-fade-in-up" id="hero-left-col">
+          <div className="flex-1 w-full md:max-w-[55%] space-y-4 sm:space-y-5 relative z-10 text-left flex flex-col items-start justify-center animate-fade-in-up" id="hero-left-col">
             
             {/* Elite Badge with red blinking dot (Left-aligned) */}
-            <div className="inline-flex items-center space-x-2.5 px-4 py-2 rounded-full bg-[#021323] border border-cyan-400/25">
-              <span className="relative flex h-2.5 w-2.5">
+            <div className="inline-flex items-center space-x-2.5 px-4 py-1.5 rounded-full bg-[#021323] border border-cyan-400/25">
+              <span className="relative flex h-2 w-2">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-red-500"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-red-500"></span>
               </span>
-              <span className="text-[11px] font-bold text-cyan-300 uppercase tracking-widest leading-none">
+              <span className="text-[10px] sm:text-[11px] font-bold text-cyan-300 uppercase tracking-widest leading-none">
                 Elite Creative Agency
               </span>
             </div>
 
             {/* Bold Headline (Increased to 72-90px on desktop) */}
-            <div className="space-y-4 text-left flex flex-col items-start w-full">
+            <div className="space-y-3 text-left flex flex-col items-start w-full">
               <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-[76px] xl:text-[84px] font-bold tracking-tight leading-[1.1] text-white text-left">
                 Walt Designs <br className="hidden lg:block" />
                 <span className="text-gradient hover:text-gradient-gold transition-all duration-300">& Studio</span>
@@ -143,6 +178,11 @@ export default function App() {
               {/* Compelling Subheadline (600-700px width limit for perfect readability) */}
               <p className="text-cyan-100/80 text-base sm:text-lg lg:text-xl leading-relaxed max-w-[650px] text-left">
                 We engineer premium, professional digital products designed with zero lag. Our mission is to scale Indian startups, creators, and professionals with elite visual assets and bulletproof business forms.
+              </p>
+
+              {/* Clear introductory paragraph describing core services for Google Search SEO Snippet generation */}
+              <p className="text-cyan-200/90 text-xs sm:text-sm leading-relaxed max-w-[650px] text-left border-l-2 border-cyan-400/50 pl-3.5 py-1 my-1">
+                Our dynamic agency offers premium <strong>Website Design</strong>, robust <strong>Website Development</strong>, custom <strong>Resume & CV Making</strong>, high-CTR <strong>Thumbnail Design</strong>, professional-tier <strong>Video Editing</strong>, and tailored <strong>Digital Solutions</strong> designed to skyrocket your conversion metrics and digital authority.
               </p>
 
               {/* Banner Added Below Subheadline */}
@@ -273,17 +313,17 @@ export default function App() {
 
         {/* Premium Full-Width Responsive Grid Statistics Section */}
         <div className="w-full max-w-none px-4 sm:px-10 md:px-12 lg:px-[70px] pb-12 sm:pb-16 relative z-10" id="hero-stats-wrapper">
-          <div className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-[32px] mt-[50px] items-stretch hero-stats" id="premium-hero-stats">
+          <div className="max-w-4xl mx-auto w-full grid grid-cols-2 gap-4 sm:gap-6 mt-[30px] items-stretch hero-stats" id="premium-hero-stats">
             {stats.map((stat, idx) => (
               <div 
                 key={idx} 
-                className="w-full min-h-[170px] p-[30px] rounded-[20px] bg-gradient-to-br from-[#4A3B18]/90 via-[#2D230C]/95 to-[#1F1705]/95 border border-[#B3923B]/60 hover:border-[#F2D06B] text-[#FFF5D6] shadow-[0_8px_32px_rgba(0,0,0,0.4)] hover:shadow-[0_16px_32px_rgba(179,146,59,0.2)] hover:-translate-y-1.5 transition-all duration-300 flex flex-col items-start justify-center text-left select-none stat-card"
+                className="w-full min-h-[110px] p-5 sm:p-6 rounded-[20px] bg-gradient-to-br from-[#4A3B18]/90 via-[#2D230C]/95 to-[#1F1705]/95 border border-[#B3923B]/60 hover:border-[#F2D06B] text-[#FFF5D6] shadow-[0_8px_32px_rgba(0,0,0,0.4)] hover:shadow-[0_16px_32px_rgba(179,146,59,0.2)] hover:-translate-y-1 transition-all duration-300 flex flex-col items-start justify-center text-left select-none stat-card"
                 id={`stat-hero-${idx}`}
               >
-                <span className="text-[3rem] font-extrabold leading-[1] text-[#F3E5AB]">
+                <span className="text-2xl sm:text-3xl font-extrabold leading-[1] text-[#F3E5AB]">
                   {stat.value}
                 </span>
-                <span className="text-[15px] font-semibold tracking-[0.5px] uppercase mt-[12px] text-amber-100/90 leading-tight">
+                <span className="text-[11px] sm:text-[13px] font-semibold tracking-[0.5px] uppercase mt-2 text-amber-100/90 leading-tight">
                   {stat.label}
                 </span>
               </div>
@@ -292,43 +332,43 @@ export default function App() {
         </div>
       </section>
 
-      {/* Main Container below the Full Screen Hero (Using original boxed grid padding for page segments) */}
-      <main className="flex-1 relative z-10 max-w-7xl mx-auto w-full max-w-full px-4 sm:px-6 lg:px-8 py-8 overflow-x-hidden" id="home-main-section">
+      {/* Main Container below the Full Screen Hero */}
+      <main className="flex-1 relative z-10 w-full max-w-full py-8 overflow-x-hidden" id="home-main-section">
         
-        {/* Core Business Values Banner */}
-        <section className="py-12 bg-black/10 border-y border-white/5 my-12 rounded-3xl w-full max-w-full overflow-x-hidden" id="values-section">
-          <div className="max-w-6xl mx-auto px-4">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+         {/* Core Business Values Banner */}
+        <section className="py-16 bg-[#022C22] border-y border-emerald-500/20 my-12 w-full max-w-full overflow-x-hidden" id="values-section">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="grid grid-cols-2 gap-3 sm:gap-6 md:gap-8">
               {values.map((v, idx) => {
                 const IconComponent = v.icon;
                 return (
                   <div 
                     key={idx} 
-                    className="p-6 rounded-2xl bg-[#1A030A]/45 border border-white/5 hover:border-white/10 transition-all text-center md:text-left flex flex-col justify-between"
+                    className="p-3 sm:p-5 md:p-6 rounded-2xl bg-emerald-950/45 border border-emerald-500/10 hover:border-emerald-500/30 transition-all text-center md:text-left flex flex-col justify-between shadow-lg"
                     id={`value-card-${idx}`}
                   >
-                    <div className="space-y-4">
+                    <div className="space-y-3 sm:space-y-4">
                       {/* Related Category Image */}
                       {v.image && (
-                        <div className="relative w-full h-40 rounded-xl overflow-hidden border border-white/10 shadow-md">
+                        <div className="relative w-full h-24 sm:h-32 md:h-40 rounded-xl overflow-hidden border border-emerald-500/10 shadow-md">
                           <img 
                             src={v.image} 
                             alt={v.title} 
                             className="w-full h-full object-cover object-center transform hover:scale-105 transition-all duration-500"
                             referrerPolicy="no-referrer"
                           />
-                          <div className="absolute inset-0 bg-gradient-to-t from-black/55 to-transparent" />
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                         </div>
                       )}
                       
-                      <div className="flex items-center space-x-3 justify-center md:justify-start">
-                        <div className="inline-flex p-2.5 rounded-xl bg-white/5 border border-white/10">
-                          <IconComponent className="w-5 h-5 text-cyan-400" />
+                      <div className="flex flex-col sm:flex-row items-center sm:space-x-3 justify-center md:justify-start space-y-2 sm:space-y-0">
+                        <div className="inline-flex p-2 rounded-xl bg-emerald-500/10 border border-emerald-500/20">
+                          <IconComponent className="w-4 h-4 sm:w-5 sm:h-5 text-emerald-400" />
                         </div>
-                        <h3 className="font-semibold text-lg text-white">{v.title}</h3>
+                        <h3 className="font-bold text-xs sm:text-sm md:text-base lg:text-lg text-white text-center md:text-left">{v.title}</h3>
                       </div>
                       
-                      <p className="text-sm text-slate-300 leading-relaxed">{v.description}</p>
+                      <p className="text-[10px] sm:text-xs md:text-sm text-emerald-100/85 leading-relaxed text-center md:text-left">{v.description}</p>
                     </div>
                   </div>
                 );
@@ -338,7 +378,7 @@ export default function App() {
         </section>
 
         {/* Portfolio Showcase Block */}
-        <section className="py-16 space-y-10 w-full max-w-full overflow-x-hidden" id="portfolio-section">
+        <section className="py-16 space-y-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 overflow-x-hidden" id="portfolio-section">
           <div className="text-center space-y-2 max-w-2xl mx-auto">
             <span className="text-xs uppercase text-cyan-400 tracking-widest font-bold">Exquisite Outcomes</span>
             <h2 className="text-3xl sm:text-4xl font-bold text-white">Featured Agency Showcase</h2>
@@ -348,43 +388,45 @@ export default function App() {
         </section>
 
         {/* FAQ Section */}
-        <section className="py-16 px-6 sm:px-12 bg-[#5B21B6] rounded-3xl space-y-10 w-full max-w-full overflow-x-hidden border border-violet-400/35 shadow-[0_15px_40px_rgba(91,33,182,0.35)] my-12" id="faq-section">
-          <div className="text-center space-y-2">
-            <span className="text-xs uppercase text-violet-200 tracking-widest font-bold">Answers Secured</span>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-white">Frequently Asked Questions</h2>
-            <p className="text-violet-100/90 text-sm max-w-2xl mx-auto">We believe in transparent operational parameters. Contact us for outstanding queries.</p>
-          </div>
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 w-full my-12">
+          <section className="py-16 px-6 sm:px-12 bg-[#5B21B6] rounded-3xl space-y-10 w-full overflow-x-hidden border border-violet-400/35 shadow-[0_15px_40px_rgba(91,33,182,0.35)]" id="faq-section">
+            <div className="text-center space-y-2">
+              <span className="text-xs uppercase text-violet-200 tracking-widest font-bold">Answers Secured</span>
+              <h2 className="text-3xl sm:text-4xl font-extrabold text-white">Frequently Asked Questions</h2>
+              <p className="text-violet-100/90 text-sm max-w-2xl mx-auto">We believe in transparent operational parameters. Contact us for outstanding queries.</p>
+            </div>
 
-          <div className="space-y-4" id="faq-accordion">
-            {FAQS_DATA.map((faq, idx) => {
-              const isOpen = openFaq === faq.id;
-              return (
-                <div 
-                  key={faq.id} 
-                  className="rounded-2xl bg-white/10 border border-white/15 overflow-hidden transition-all duration-300 shadow-sm"
-                  id={`faq-item-${faq.id}`}
-                >
-                  <button
-                    onClick={() => setOpenFaq(isOpen ? null : faq.id)}
-                    className="w-full flex items-center justify-between p-6 text-left focus:outline-none hover:bg-white/10 transition-colors cursor-pointer"
+            <div className="space-y-4" id="faq-accordion">
+              {FAQS_DATA.map((faq, idx) => {
+                const isOpen = openFaq === faq.id;
+                return (
+                  <div 
+                    key={faq.id} 
+                    className="rounded-2xl bg-white/10 border border-white/15 overflow-hidden transition-all duration-300 shadow-sm"
+                    id={`faq-item-${faq.id}`}
                   >
-                    <span className="font-bold text-white pr-4">S.No. {idx + 1}: {faq.question}</span>
-                    {isOpen ? (
-                      <ChevronUp className="w-5 h-5 text-white shrink-0" />
-                    ) : (
-                      <ChevronDown className="w-5 h-5 text-violet-200 shrink-0" />
+                    <button
+                      onClick={() => setOpenFaq(isOpen ? null : faq.id)}
+                      className="w-full flex items-center justify-between p-6 text-left focus:outline-none hover:bg-white/10 transition-colors cursor-pointer"
+                    >
+                      <span className="font-bold text-white pr-4">{idx + 1}. {faq.question}</span>
+                      {isOpen ? (
+                        <ChevronUp className="w-5 h-5 text-white shrink-0" />
+                      ) : (
+                        <ChevronDown className="w-5 h-5 text-violet-200 shrink-0" />
+                      )}
+                    </button>
+                    {isOpen && (
+                      <div className="p-6 pt-0 border-t border-white/10 text-sm text-violet-50 leading-relaxed font-sans transition-all animate-fadeIn">
+                        {faq.answer}
+                      </div>
                     )}
-                  </button>
-                  {isOpen && (
-                    <div className="p-6 pt-0 border-t border-white/10 text-sm text-violet-50 leading-relaxed font-sans transition-all animate-fadeIn">
-                      {faq.answer}
-                    </div>
-                  )}
-                </div>
-              );
-            })}
-          </div>
-        </section>
+                  </div>
+                );
+              })}
+            </div>
+          </section>
+        </div>
 
       </main>
 
@@ -544,6 +586,18 @@ export default function App() {
 
         </div>
       </section>
+
+      {/* Back to Top Floating Button with glassmorphism */}
+      {showBackToTop && (
+        <button
+          onClick={scrollToTop}
+          className="fixed bottom-6 right-6 z-50 p-3 sm:p-4 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white shadow-2xl hover:bg-white/20 hover:scale-110 active:scale-95 transition-all duration-300 cursor-pointer flex items-center justify-center"
+          aria-label="Back to top"
+          id="back-to-top-button"
+        >
+          <ChevronUp className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
+        </button>
+      )}
 
       <Footer />
     </div>
