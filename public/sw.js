@@ -10,8 +10,7 @@ const PRECACHE_ASSETS = [
   '/contact.html',
   '/manifest.json',
   '/icon-192.png',
-  '/icon-512.png',
-  '/icon-maskable.png'
+  '/icon-512.png'
 ];
 
 self.addEventListener('install', (event) => {
