@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { motion } from 'motion/react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import Portfolio from '../components/Portfolio';
@@ -162,8 +163,12 @@ export default function Home() {
               {values.map((v, idx) => {
                 const IconComponent = v.icon;
                 return (
-                  <div 
+                  <motion.div 
                     key={idx} 
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, margin: "-50px" }}
+                    transition={{ duration: 0.6, delay: idx * 0.15, ease: "easeOut" }}
                     className="p-6 rounded-2xl bg-[#0F0F0F]/20 border border-neutral-850 space-y-4 hover:border-neutral-700 transition-all text-center md:text-left"
                     id={`value-card-${idx}`}
                   >
@@ -174,7 +179,7 @@ export default function Home() {
                       <h3 className="font-display font-semibold text-lg text-white">{v.title}</h3>
                       <p className="text-sm text-slate-400 leading-relaxed">{v.description}</p>
                     </div>
-                  </div>
+                  </motion.div>
                 );
               })}
             </div>

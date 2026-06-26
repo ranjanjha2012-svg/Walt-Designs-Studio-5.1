@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { motion } from 'motion/react';
 import { Quote, Star, ChevronLeft, ChevronRight, User } from 'lucide-react';
 import { TESTIMONIALS_DATA } from '../data';
 
@@ -16,7 +17,14 @@ export default function Testimonials() {
   const active = TESTIMONIALS_DATA[activeIndex];
 
   return (
-    <div className="space-y-10" id="testimonials-block">
+    <motion.div 
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-100px" }}
+      transition={{ duration: 0.8, ease: "easeOut" }}
+      className="space-y-10" 
+      id="testimonials-block"
+    >
       {/* Testimonial slider structure */}
       <div className="relative max-w-4xl mx-auto glass-panel rounded-3xl border border-neutral-800 p-8 sm:p-14 overflow-hidden shadow-2xl bg-[#0F0F0F]">
         <div className="absolute top-0 right-0 w-44 h-44 bg-amber-500/5 blur-[80px] rounded-full pointer-events-none" />
@@ -91,6 +99,6 @@ export default function Testimonials() {
           />
         ))}
       </div>
-    </div>
+    </motion.div>
   );
 }
