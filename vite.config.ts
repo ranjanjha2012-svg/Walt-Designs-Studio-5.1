@@ -15,7 +15,6 @@ export default defineConfig(() => {
       rollupOptions: {
         input: {
           main: path.resolve(__dirname, 'index.html'),
-          downloader: path.resolve(__dirname, 'youtube-downloader.html'),
           services: path.resolve(__dirname, 'services.html'),
           about: path.resolve(__dirname, 'about.html'),
           contact: path.resolve(__dirname, 'contact.html'),

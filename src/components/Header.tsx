@@ -15,7 +15,6 @@ export default function Header() {
 
   const navLinks = [
     { name: 'Home', href: '/' },
-    { name: 'YT Downloader', href: '/youtube-downloader' },
     { name: 'Services', href: '/services' },
     { name: 'About Us', href: '/about' },
     { name: 'Contact Us', href: '/contact' }
