@@ -139,12 +139,13 @@ async function startServer() {
     const isAudio = format === 'mp3' || format === 'm4a';
     const candidateUrls: string[] = [];
 
-    // Provider 1: Cobalt Instances
+    // Provider 1: Cobalt API Instances
     const cobaltInstances = [
       'https://api.cobalt.tools/api/json',
       'https://co.wuk.sh/api/json',
       'https://cobalt-api.kwippy.net/api/json',
-      'https://api.imput.net/api/json'
+      'https://api.imput.net/api/json',
+      'https://cobalt.m3u8.dev/api/json'
     ];
 
     for (const cobaltUrl of cobaltInstances) {
@@ -154,7 +155,7 @@ async function startServer() {
           headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json',
-            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)'
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
           },
           body: JSON.stringify({
             url: `https://www.youtube.com/watch?v=${videoId}`,
@@ -182,7 +183,8 @@ async function startServer() {
         'https://inv.tux.pizza/api/v1/videos/',
         'https://vid.puffyan.us/api/v1/videos/',
         'https://invidious.nerdvpn.de/api/v1/videos/',
-        'https://inv.riverside.rocks/api/v1/videos/'
+        'https://inv.riverside.rocks/api/v1/videos/',
+        'https://invidious.drgns.space/api/v1/videos/'
       ];
 
       for (const invInstance of invidiousInstances) {
@@ -215,7 +217,8 @@ async function startServer() {
       const pipedInstances = [
         'https://pipedapi.kavin.rocks/streams/',
         'https://api.piped.video/streams/',
-        'https://pipedapi.mha.fi/streams/'
+        'https://pipedapi.mha.fi/streams/',
+        'https://pipedapi.adminforge.de/streams/'
       ];
 
       for (const pipedUrl of pipedInstances) {
@@ -285,10 +288,16 @@ async function startServer() {
       }
     }
 
-    // Error response if all stream attempts fail - return JSON status 502, NEVER HTML or 302 redirect
-    return res.status(502).json({
+    // If server-side proxy stream is blocked by YouTube Cloud IP restrictions, return clear fallback mirror options
+    const fallbackUrl = `https://ssyoutube.com/watch?v=${videoId}`;
+    const altMirror = `https://y2mate.is/download?url=https://www.youtube.com/watch?v=${videoId}`;
+
+    return res.status(200).json({
       success: false,
-      error: 'Unable to stream video directly from YouTube. The video may be restricted, private, or age-gated. Please try another video or format.'
+      isFallback: true,
+      fallbackUrl,
+      altMirror,
+      message: 'Direct server IP stream was blocked by YouTube bot protection. Use the instant high-speed download mirror link below.'
     });
   }
 

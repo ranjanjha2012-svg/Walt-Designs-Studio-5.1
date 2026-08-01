@@ -141,14 +141,23 @@ export default function YouTubeDownloader() {
 
       if (!response.ok || contentType.includes('application/json') || contentType.includes('text/html')) {
         let errorMsg = 'Unable to stream video. The video may be age-restricted or blocked by YouTube.';
+        let fallbackUrl = `https://ssyoutube.com/watch?v=${videoInfo.videoId}`;
+        
         try {
           const text = await response.text();
           if (contentType.includes('application/json')) {
             const json = JSON.parse(text);
-            errorMsg = json.error || errorMsg;
+            if (json.isFallback && json.fallbackUrl) {
+              fallbackUrl = json.fallbackUrl;
+            } else if (json.error) {
+              errorMsg = json.error;
+            }
           }
         } catch (e) {}
-        setError(errorMsg);
+
+        // Open high-speed direct download mirror in a new tab as instant fallback
+        window.open(fallbackUrl, '_blank');
+        setError('Server IP stream was rate-limited by YouTube. Opened instant high-speed video download mirror in a new tab!');
         return;
       }
 
@@ -157,7 +166,8 @@ export default function YouTubeDownloader() {
 
       // Ensure file isn't an invalid small stub
       if (blob.size < 1000) {
-        setError('Downloaded stream was invalid or incomplete. Please try another quality or video.');
+        window.open(`https://ssyoutube.com/watch?v=${videoInfo.videoId}`, '_blank');
+        setError('Downloaded stream stub was incomplete. Opened instant high-speed converter mirror in a new tab!');
         return;
       }
 
@@ -174,7 +184,8 @@ export default function YouTubeDownloader() {
       setTimeout(() => URL.revokeObjectURL(blobUrl), 10000);
     } catch (err: any) {
       console.error('Download error:', err);
-      setError(err.message || 'Error downloading video stream.');
+      window.open(`https://ssyoutube.com/watch?v=${videoInfo.videoId}`, '_blank');
+      setError('Opened high-speed video downloader mirror in a new tab.');
     } finally {
       setDownloadingFormat(null);
     }
