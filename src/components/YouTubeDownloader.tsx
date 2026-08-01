@@ -127,22 +127,56 @@ export default function YouTubeDownloader() {
   const triggerDownload = async (format: string, quality: string) => {
     if (!videoInfo) return;
     setDownloadingFormat(`${format}-${quality}`);
+    setError(null);
 
     try {
-      // Request download from backend proxy or open download stream
-      const downloadUrl = `/api/yt/download?videoId=${videoInfo.videoId}&format=${format}&quality=${quality}&title=${encodeURIComponent(videoInfo.title)}`;
-      
-      // Create hidden link to initiate file download
+      const cleanTitle = videoInfo.title.replace(/[^a-zA-Z0-9_-]/g, '_').substring(0, 50) || 'YouTube_Video';
+      const fileExtension = format === '320k' || format === '128k' ? 'mp3' : format;
+      const filename = `${cleanTitle}_${quality}.${fileExtension}`;
+      const downloadUrl = `/api/yt/download?videoId=${videoInfo.videoId}&format=${fileExtension}&quality=${quality}&title=${encodeURIComponent(videoInfo.title)}`;
+
+      // Fetch stream from Express full-stack proxy API
+      const response = await fetch(downloadUrl);
+      const contentType = response.headers.get('content-type') || '';
+
+      if (!response.ok || contentType.includes('application/json') || contentType.includes('text/html')) {
+        let errorMsg = 'Unable to stream video. The video may be age-restricted or blocked by YouTube.';
+        try {
+          const text = await response.text();
+          if (contentType.includes('application/json')) {
+            const json = JSON.parse(text);
+            errorMsg = json.error || errorMsg;
+          }
+        } catch (e) {}
+        setError(errorMsg);
+        return;
+      }
+
+      // Read binary video/audio stream blob
+      const blob = await response.blob();
+
+      // Ensure file isn't an invalid small stub
+      if (blob.size < 1000) {
+        setError('Downloaded stream was invalid or incomplete. Please try another quality or video.');
+        return;
+      }
+
+      // Generate object URL for direct browser file download
+      const blobUrl = URL.createObjectURL(blob);
       const link = document.createElement('a');
-      link.href = downloadUrl;
-      link.setAttribute('download', `${videoInfo.title.replace(/[^a-zA-Z0-9]/g, '_')}_${quality}.${format}`);
+      link.href = blobUrl;
+      link.download = filename;
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
-    } catch (err) {
+
+      // Revoke blob URL after download trigger
+      setTimeout(() => URL.revokeObjectURL(blobUrl), 10000);
+    } catch (err: any) {
       console.error('Download error:', err);
+      setError(err.message || 'Error downloading video stream.');
     } finally {
-      setTimeout(() => setDownloadingFormat(null), 1500);
+      setDownloadingFormat(null);
     }
   };
 
