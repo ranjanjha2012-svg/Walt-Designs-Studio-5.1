@@ -4,6 +4,7 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import Portfolio from '../components/Portfolio';
 import Testimonials from '../components/Testimonials';
+import YouTubeDownloader from '../components/YouTubeDownloader';
 import { FAQS_DATA } from '../data';
 import { ChevronDown, ChevronUp, Sparkles, TrendingUp, Compass, ArrowRight, Zap, BadgeCheck, Map } from 'lucide-react';
 
@@ -184,6 +185,11 @@ export default function Home() {
               })}
             </div>
           </div>
+        </section>
+
+        {/* Free YouTube Video Downloader Section */}
+        <section className="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto" id="youtube-downloader-section">
+          <YouTubeDownloader />
         </section>
 
         {/* Portfolio Showcase Block */}

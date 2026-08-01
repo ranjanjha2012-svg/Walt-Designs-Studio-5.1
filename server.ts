@@ -81,6 +81,106 @@ async function startServer() {
     }
   });
 
+  // API Route: YouTube Video Information Fetcher
+  app.get('/api/yt/info', async (req, res) => {
+    try {
+      const inputUrl = req.query.url as string;
+      if (!inputUrl) {
+        return res.status(400).json({ success: false, error: 'URL parameter is required' });
+      }
+
+      // Helper regex to extract 11-character Youtube video ID
+      const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|shorts\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+      const match = inputUrl.trim().match(regExp);
+      const videoId = (match && match[2].length === 11) ? match[2] : (inputUrl.trim().length === 11 ? inputUrl.trim() : null);
+
+      if (!videoId) {
+        return res.status(400).json({ success: false, error: 'Invalid YouTube link format' });
+      }
+
+      // Query YouTube official oEmbed API for details
+      const oembedRes = await fetch(`https://www.youtube.com/oembed?url=https://www.youtube.com/watch?v=${videoId}&format=json`);
+      
+      let title = 'YouTube Video';
+      let author = 'YouTube Creator';
+      let authorUrl = `https://www.youtube.com/watch?v=${videoId}`;
+
+      if (oembedRes.ok) {
+        const oembedData = await oembedRes.json();
+        title = oembedData.title || title;
+        author = oembedData.author_name || author;
+        authorUrl = oembedData.author_url || authorUrl;
+      }
+
+      const videoInfo = {
+        videoId,
+        title,
+        author,
+        authorUrl,
+        thumbnail: `https://i.ytimg.com/vi/${videoId}/maxresdefault.jpg`,
+        embedUrl: `https://www.youtube.com/embed/${videoId}`
+      };
+
+      return res.status(200).json({ success: true, videoInfo });
+    } catch (err: any) {
+      console.error('[YT Info Error]:', err.message);
+      return res.status(500).json({ success: false, error: 'Could not resolve YouTube video details' });
+    }
+  });
+
+  // API Route: YouTube Video Direct Download Proxy
+  app.get('/api/yt/download', async (req, res) => {
+    try {
+      const videoId = req.query.videoId as string;
+      const format = (req.query.format as string) || 'mp4';
+      const quality = (req.query.quality as string) || '720p';
+      const rawTitle = (req.query.title as string) || 'YouTube_Video';
+
+      if (!videoId) {
+        return res.status(400).send('videoId parameter is missing.');
+      }
+
+      const cleanTitle = rawTitle.replace(/[^a-zA-Z0-9_-]/g, '_').substring(0, 50);
+      const filename = `${cleanTitle}_${quality}.${format}`;
+
+      // Set headers to trigger direct browser download without ads
+      res.setHeader('Content-Disposition', `attachment; filename="${filename}"`);
+      res.setHeader('Content-Type', format === 'mp3' ? 'audio/mpeg' : 'video/mp4');
+
+      // Attempt clean direct stream source from public API node
+      const cobaltApiUrl = 'https://api.cobalt.tools/api/json';
+      const cobaltRes = await fetch(cobaltApiUrl, {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+          'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)'
+        },
+        body: JSON.stringify({
+          url: `https://www.youtube.com/watch?v=${videoId}`,
+          vQuality: quality.replace('p', ''),
+          isAudioOnly: format === 'mp3'
+        })
+      });
+
+      if (cobaltRes.ok) {
+        const cobaltData = await cobaltRes.json();
+        if (cobaltData.url) {
+          // Redirect or pipe stream directly
+          return res.redirect(cobaltData.url);
+        }
+      }
+
+      // Fallback redirect to direct YouTube video stream / loader mirror
+      const fallbackUrl = `https://y2mate.is/download?url=https://www.youtube.com/watch?v=${videoId}`;
+      return res.redirect(fallbackUrl);
+
+    } catch (err: any) {
+      console.error('[YT Download Proxy Error]:', err.message);
+      return res.status(500).send('Error initializing video download stream.');
+    }
+  });
+
   // API Route: AI Business Planner using Gemini 3.5 Flash JSON Output
   app.post('/api/ai-planner', async (req, res) => {
     try {
@@ -207,7 +307,9 @@ async function startServer() {
     // Custom path mapping middleware to target distinct HTML pages in dev (MPA emulation)
     app.use((req, res, next) => {
       const cleanPath = req.path;
-      if (cleanPath === '/services') {
+      if (cleanPath === '/youtube-downloader' || cleanPath === '/downloader') {
+        req.url = '/youtube-downloader.html';
+      } else if (cleanPath === '/services') {
         req.url = '/services.html';
       } else if (cleanPath === '/about') {
         req.url = '/about.html';
@@ -226,6 +328,10 @@ async function startServer() {
     
     app.get('/', (req, res) => {
       res.sendFile(path.join(distPath, 'index.html'));
+    });
+
+    app.get(['/youtube-downloader', '/downloader'], (req, res) => {
+      res.sendFile(path.join(distPath, 'youtube-downloader.html'));
     });
     
     app.get('/services', (req, res) => {
