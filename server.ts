@@ -213,6 +213,8 @@ async function startServer() {
         req.url = '/about.html';
       } else if (cleanPath === '/contact') {
         req.url = '/contact.html';
+      } else if (cleanPath === '/lime-green-spl' || cleanPath === '/lime-green-spl.html') {
+        req.url = '/lime-green-spl.html';
       } else if (cleanPath === '/' || cleanPath === '/index.html') {
         req.url = '/index.html';
       }
@@ -238,6 +240,10 @@ async function startServer() {
     
     app.get('/contact', (req, res) => {
       res.sendFile(path.join(distPath, 'contact.html'));
+    });
+
+    app.get('/lime-green-spl', (req, res) => {
+      res.sendFile(path.join(distPath, 'lime-green-spl.html'));
     });
 
     // Fallbacks and Static assets

@@ -38,40 +38,40 @@ export default function Home() {
       <main className="flex-1 relative z-10" id="home-main-section">
         
         {/* Hero Section */}
-        <section className="relative pt-12 pb-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto" id="hero-section">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        <section className="relative pt-4 pb-8 sm:pt-6 sm:pb-12 lg:pt-8 lg:pb-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto" id="hero-section">
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8 lg:gap-10 items-center">
             
             {/* Left Content column */}
-            <div className="lg:col-span-7 space-y-8">
-              <div className="inline-flex items-center space-x-2 px-3 py-1.5 rounded-full bg-[#0F0F0F] border border-amber-500/20 animate-fadeIn">
+            <div className="md:col-span-7 space-y-4 sm:space-y-6">
+              <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-[#0F0F0F] border border-amber-500/20 animate-fadeIn">
                 <Sparkles className="w-4 h-4 text-amber-500 animate-spin" style={{ animationDuration: '6s' }} />
                 <span className="font-mono text-[11px] font-semibold text-amber-300 uppercase tracking-widest leading-none">
                   Elite Creative Agency
                 </span>
               </div>
 
-              <div className="space-y-4">
-                <h1 className="font-display font-medium text-4xl sm:text-5xl lg:text-6xl tracking-tight leading-tight text-white">
+              <div className="space-y-3">
+                <h1 className="font-display font-medium text-3xl sm:text-4xl md:text-5xl lg:text-6xl tracking-tight leading-tight text-white">
                   Walt Designs <br className="hidden sm:block" />
                   <span className="text-gradient font-bold">& Studio</span>
                 </h1>
-                <p className="text-neutral-400 text-lg leading-relaxed max-w-xl">
+                <p className="text-neutral-300 text-sm sm:text-base lg:text-lg leading-relaxed max-w-xl">
                   We engineer premium, professional digital products designed with zero lag. Our mission is to scale Indian startups, creators, and professionals with elite visual assets and bulletproof business forms.
                 </p>
               </div>
 
               {/* Core Features / Quick Stats Pills */}
-              <div className="flex flex-wrap gap-4 pt-2">
+              <div className="flex flex-wrap gap-2.5 sm:gap-3 pt-1">
                 {stats.map((stat, idx) => (
                   <div 
                     key={idx} 
-                    className="px-5 py-3 rounded-2xl bg-[#0F0F0F]/60 border border-neutral-800 backdrop-blur-sm hover:border-amber-500/25 transition-all flex items-center space-x-3"
+                    className="px-4 py-2 sm:px-5 sm:py-2.5 rounded-xl bg-[#0F0F0F]/60 border border-neutral-800 backdrop-blur-sm hover:border-amber-500/25 transition-all flex items-center space-x-2.5"
                     id={`stat-hero-${idx}`}
                   >
-                    <span className="font-display text-2xl font-bold bg-gradient-to-r from-amber-400 to-amber-600 bg-clip-text text-transparent">
+                    <span className="font-display text-xl sm:text-2xl font-bold bg-gradient-to-r from-amber-400 to-amber-600 bg-clip-text text-transparent">
                       {stat.value}
                     </span>
-                    <span className="text-xs text-neutral-400 font-medium font-mono border-l border-neutral-800 pl-3 leading-tight uppercase tracking-wider">
+                    <span className="text-[11px] sm:text-xs text-neutral-400 font-medium font-mono border-l border-neutral-800 pl-2.5 leading-tight uppercase tracking-wider">
                       {stat.label}
                     </span>
                   </div>
@@ -79,16 +79,16 @@ export default function Home() {
               </div>
 
               {/* Hero CTA Block */}
-              <div className="flex flex-col sm:flex-row gap-4 pt-4">
+              <div className="flex flex-col sm:flex-row gap-3 pt-2">
                 <a
                   href="/contact"
-                  className="px-8 py-4 rounded-xl text-center font-display text-sm font-bold text-black bg-amber-500 hover:bg-amber-400 transition-all cursor-pointer shadow-lg shadow-amber-500/5 hover:scale-[1.02] active:scale-95"
+                  className="px-6 sm:px-8 py-3 sm:py-3.5 rounded-xl text-center font-display text-sm font-bold text-black bg-amber-500 hover:bg-amber-400 transition-all cursor-pointer shadow-lg shadow-amber-500/5 hover:scale-[1.02] active:scale-95"
                 >
                   Consult Auto-AI Planner
                 </a>
                 <a
                   href="/services"
-                  className="px-8 py-4 rounded-xl text-center font-display text-sm font-semibold text-slate-200 bg-[#0F0F0F] hover:bg-[#1A1A1A] border border-neutral-800 hover:border-neutral-700 transition-all cursor-pointer inline-flex items-center justify-center space-x-2"
+                  className="px-6 sm:px-8 py-3 sm:py-3.5 rounded-xl text-center font-display text-sm font-semibold text-slate-200 bg-[#0F0F0F] hover:bg-[#1A1A1A] border border-neutral-800 hover:border-neutral-700 transition-all cursor-pointer inline-flex items-center justify-center space-x-2"
                 >
                   <span>Review Our Services</span>
                   <ArrowRight className="w-4 h-4 text-neutral-400" />
@@ -97,19 +97,19 @@ export default function Home() {
             </div>
 
             {/* Right Graphic column with Watermarks */}
-            <div className="lg:col-span-5 relative" id="hero-graphic-block">
+            <div className="md:col-span-5 w-full max-w-md mx-auto md:max-w-none relative" id="hero-graphic-block">
               <div className="absolute inset-0 bg-gradient-to-tr from-amber-500/5 via-[#1A1A1A]/20 to-transparent rounded-3xl blur-2xl" />
               
               {/* Overlapping glassmorphism frames detailing client hub */}
-              <div className="relative glass-panel rounded-3xl border border-neutral-800 p-8 space-y-6 shadow-2xl bg-[#0F0F0F]/90 overflow-hidden group">
+              <div className="relative glass-panel rounded-2xl sm:rounded-3xl border border-neutral-800 p-5 sm:p-7 space-y-4 sm:space-y-5 shadow-2xl bg-[#0F0F0F]/90 overflow-hidden group">
                 {/* Embedded logo watermark */}
                 <div className="absolute -bottom-10 -right-10 w-44 h-44 opacity-[0.03] select-none pointer-events-none">
                   <img src={logoUrl} alt="Watermark" className="w-full h-full object-cover rounded-full" />
                 </div>
  
-                <div className="flex items-center justify-between border-b border-neutral-800 pb-4">
+                <div className="flex items-center justify-between border-b border-neutral-800 pb-3">
                   <div className="flex items-center space-x-3">
-                    <div className="w-10 h-10 rounded-lg overflow-hidden border border-amber-500/20">
+                    <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-lg overflow-hidden border border-amber-500/20 shrink-0">
                       <img src={logoUrl} alt="Walt Main Logo" className="w-full h-full object-cover" />
                     </div>
                     <div>
@@ -121,23 +121,23 @@ export default function Home() {
                 </div>
 
                 {/* Micro presentation widget content */}
-                <div className="space-y-4 text-xs font-mono">
-                  <div className="space-y-1">
+                <div className="space-y-3 text-xs font-mono">
+                  <div className="space-y-0.5">
                     <p className="text-slate-500 text-[10px] uppercase">Service Reach Bounds:</p>
-                    <p className="text-slate-300 font-sans text-sm font-medium">Pan-India Creative Integration</p>
+                    <p className="text-slate-300 font-sans text-xs sm:text-sm font-medium">Pan-India Creative Integration</p>
                   </div>
-                  <div className="space-y-1">
+                  <div className="space-y-0.5">
                     <p className="text-slate-500 text-[10px] uppercase">Active Local Service Hubs:</p>
-                    <p className="text-amber-400 font-sans text-sm font-medium">Delhi, Noida & Faridabad NCR</p>
+                    <p className="text-amber-400 font-sans text-xs sm:text-sm font-medium">Delhi, Noida & Faridabad NCR</p>
                   </div>
-                  <div className="pt-4 border-t border-neutral-800 flex items-center justify-between">
+                  <div className="pt-3 border-t border-neutral-800 flex items-center justify-between">
                     <span className="text-slate-500 uppercase text-[9px]">Establishment Code:</span>
                     <span className="text-amber-500 text-[11px] font-bold">W-2026-ACTIVE</span>
                   </div>
                 </div>
 
                 {/* Premium tag overlay */}
-                <div className="flex items-center space-x-2 bg-[#0A0A0A] p-3 rounded-xl border border-neutral-800">
+                <div className="flex items-center space-x-2 bg-[#0A0A0A] p-2.5 sm:p-3 rounded-xl border border-neutral-800">
                   <TrendingUp className="w-4 h-4 text-amber-500 shrink-0" />
                   <p className="text-[11px] text-neutral-400 font-sans leading-relaxed">
                     Over <span className="text-white font-semibold">80+ Projects</span> deployed with absolute zero design lags.
@@ -146,9 +146,9 @@ export default function Home() {
               </div>
 
               {/* Floating micro accent cards */}
-              <div className="absolute -bottom-6 -left-6 bg-[#0F0F0F] border border-amber-500/20 px-4 py-2.5 rounded-xl shadow-xl z-20 flex items-center space-x-2 text-xs font-mono animate-bounce" style={{ animationDuration: '4s' }}>
+              <div className="absolute -bottom-3 -left-3 sm:-bottom-4 sm:-left-4 bg-[#0F0F0F] border border-amber-500/20 px-3 py-1.5 sm:px-4 sm:py-2 rounded-xl shadow-xl z-20 flex items-center space-x-2 text-xs font-mono animate-bounce" style={{ animationDuration: '4s' }}>
                 <span className="w-2 h-2 rounded-full bg-amber-400" />
-                <span className="text-amber-400 font-sans font-bold">100% On-time</span>
+                <span className="text-amber-400 font-sans font-bold text-[10px] sm:text-xs">100% On-time</span>
               </div>
             </div>
 
@@ -156,7 +156,7 @@ export default function Home() {
         </section>
 
         {/* Core Business Values Banner */}
-        <section className="py-16 bg-[#0F0F0F]/40 border-y border-neutral-800 px-4 sm:px-6 lg:px-8" id="values-section">
+        <section className="py-10 sm:py-14 bg-[#0F0F0F]/40 border-y border-neutral-800 px-4 sm:px-6 lg:px-8" id="values-section">
           <div className="max-w-7xl mx-auto">
             <h2 className="sr-only">Core Walt Values</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">

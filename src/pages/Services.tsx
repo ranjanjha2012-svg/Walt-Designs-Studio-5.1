@@ -23,10 +23,10 @@ export default function Services() {
         <div className="absolute top-40 left-[10%] w-[300px] h-[300px] bg-amber-500/3 blur-[100px] rounded-full" />
       </div>
 
-      <main className="flex-grow relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16" id="services-main-section">
+      <main className="flex-grow relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-10" id="services-main-section">
         
         {/* Header summary section */}
-        <div className="max-w-3xl space-y-4 mb-16 border-l-4 border-amber-500 pl-6 py-2">
+        <div className="max-w-3xl space-y-3 mb-8 sm:mb-12 border-l-4 border-amber-500 pl-4 sm:pl-6 py-1 sm:py-2">
           <span className="font-mono text-xs uppercase text-amber-500 tracking-widest font-bold">Specialized Competence</span>
           <h1 className="font-display font-medium text-4xl sm:text-5xl text-white">Our Service Suite</h1>
           <p className="text-neutral-400 text-base leading-relaxed">

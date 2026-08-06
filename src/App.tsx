@@ -84,10 +84,10 @@ export default function App() {
 
       <Header />
 
-      {/* Redesigned Premium Hero Section - Content-Adaptive to Remove Spacing Gaps */}
+      {/* Redesigned Premium Hero Section - Gap-Free Content-Adaptive Across Phone, Tab & Desktop */}
       <section 
         id="hero-section" 
-        className="relative w-full max-w-full min-h-screen bg-gradient-to-br from-[#021B34] via-[#032B4E] to-[#063E63] overflow-hidden flex flex-col justify-start border-b border-cyan-950"
+        className="relative w-full max-w-full bg-gradient-to-br from-[#021B34] via-[#032B4E] to-[#063E63] overflow-hidden flex flex-col justify-start border-b border-cyan-950/80"
       >
         {/* Subtle radial gradients for extra depth */}
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(10,108,154,0.18)_0%,rgba(3,43,78,0)_70%)] pointer-events-none z-0" stroke="none" />
@@ -142,8 +142,8 @@ export default function App() {
           </g>
         </svg>
 
-        {/* Fancy Marquee below header at hero, between Elite Creative Agency and header */}
-        <div className="w-full bg-[#D946EF] border-b border-pink-400/40 py-3 relative z-10 select-none overflow-hidden" id="fancy-marquee-bar-hero">
+        {/* Fancy Marquee below header at hero */}
+        <div className="w-full bg-[#D946EF] border-b border-pink-400/40 py-2 sm:py-2.5 relative z-10 select-none overflow-hidden" id="fancy-marquee-bar-hero">
           <div className="absolute inset-y-0 left-0 w-12 bg-gradient-to-r from-[#D946EF] to-transparent z-20 pointer-events-none" />
           <div className="absolute inset-y-0 right-0 w-12 bg-gradient-to-l from-[#D946EF] to-transparent z-20 pointer-events-none" />
           <marquee direction="left" scrollamount="6" className="text-white font-mono text-xs sm:text-sm tracking-[0.1em] font-extrabold uppercase block">
@@ -151,14 +151,14 @@ export default function App() {
           </marquee>
         </div>
 
-        {/* Content Box aligned to Layout grid limits - Two-column immersive SaaS-style layout */}
-        <div className="w-full max-w-none px-4 sm:px-10 md:px-12 lg:px-[70px] pt-1 pb-12 md:pt-2 md:pb-16 relative z-10 flex flex-col md:flex-row justify-between items-start gap-8 lg:gap-[80px]" id="hero-grid-container">
+        {/* Responsive Grid Layout - Seamless across Phone, Tab & Desktop without gaps */}
+        <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-12 pt-3 pb-4 sm:pt-4 sm:pb-6 lg:pt-6 lg:pb-8 relative z-10 grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8 lg:gap-10 items-center" id="hero-grid-container">
           
-          {/* Left Text and Stats Col (55% width on desktop) */}
-          <div className="flex-1 w-full md:max-w-[55%] space-y-4 sm:space-y-5 relative z-10 text-left flex flex-col items-start justify-center animate-fade-in-up" id="hero-left-col">
+          {/* Left Text and Stats Col */}
+          <div className="md:col-span-7 space-y-3 sm:space-y-4 relative z-10 text-left flex flex-col items-start justify-center animate-fade-in-up" id="hero-left-col">
             
-            {/* Elite Badge with red blinking dot (Left-aligned) */}
-            <div className="inline-flex items-center space-x-2.5 px-4 py-1.5 rounded-full bg-[#021323] border border-cyan-400/25">
+            {/* Elite Badge */}
+            <div className="inline-flex items-center space-x-2 px-3 sm:px-3.5 py-1 rounded-full bg-[#021323] border border-cyan-400/25">
               <span className="relative flex h-2 w-2">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-red-500"></span>
@@ -168,30 +168,30 @@ export default function App() {
               </span>
             </div>
 
-            {/* Bold Headline (Increased to 72-90px on desktop) */}
-            <div className="space-y-3 text-left flex flex-col items-start w-full">
-              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-[76px] xl:text-[84px] font-bold tracking-tight leading-[1.1] text-white text-left">
-                Walt Designs <br className="hidden lg:block" />
+            {/* Bold Headline */}
+            <div className="space-y-2 text-left flex flex-col items-start w-full">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight leading-[1.1] text-white text-left">
+                Walt Designs <br className="hidden sm:block" />
                 <span className="text-gradient hover:text-gradient-gold transition-all duration-300">& Studio</span>
               </h1>
               
-              {/* Compelling Subheadline (600-700px width limit for perfect readability) */}
-              <p className="text-cyan-100/80 text-base sm:text-lg lg:text-xl leading-relaxed max-w-[650px] text-left">
+              {/* Compelling Subheadline */}
+              <p className="text-cyan-100/90 text-sm sm:text-base lg:text-lg leading-relaxed max-w-[650px] text-left">
                 We engineer premium, professional digital products designed with zero lag. Our mission is to scale Indian startups, creators, and professionals with elite visual assets and bulletproof business forms.
               </p>
 
-              {/* Clear introductory paragraph describing core services for Google Search SEO Snippet generation */}
-              <p className="text-cyan-200/90 text-xs sm:text-sm leading-relaxed max-w-[650px] text-left border-l-2 border-cyan-400/50 pl-3.5 py-1 my-1">
+              {/* SEO Snippet Description */}
+              <p className="text-cyan-200/90 text-xs sm:text-sm leading-relaxed max-w-[650px] text-left border-l-2 border-cyan-400/50 pl-3 py-0.5 my-0.5">
                 Our dynamic agency offers premium <strong>Website Design</strong>, robust <strong>Website Development</strong>, custom <strong>Resume & CV Making</strong>, high-CTR <strong>Thumbnail Design</strong>, professional-tier <strong>Video Editing</strong>, and tailored <strong>Digital Solutions</strong> designed to skyrocket your conversion metrics and digital authority.
               </p>
 
               {/* Banner Added Below Subheadline */}
-              <div className="w-full max-w-[650px] my-3 overflow-hidden rounded-xl border border-cyan-400/35 transition-all duration-300 hover:border-cyan-400/60 shadow-xl bg-black/20">
-                <a href="https://ibb.co/fYTyTGDb" target="_blank" rel="noopener noreferrer" className="block">
+              <div className="w-full max-w-[650px] my-1.5 overflow-hidden rounded-xl border border-cyan-400/35 transition-all duration-300 hover:border-cyan-400/60 shadow-lg bg-black/20 leading-none">
+                <a href="https://ibb.co/fYTyTGDb" target="_blank" rel="noopener noreferrer" className="block leading-none">
                   <img 
                     src="https://i.ibb.co/kgPwP6mp/Whats-App-Image-2026-06-24-at-07-00-03.jpg" 
                     alt="Whats-App-Image-2026-06-24-at-07-00-03" 
-                    className="w-full h-auto object-cover hover:scale-[1.02] transition-all duration-500" 
+                    className="w-full h-auto object-cover hover:scale-[1.01] transition-all duration-500 block" 
                     referrerPolicy="no-referrer"
                   />
                 </a>
@@ -199,16 +199,16 @@ export default function App() {
             </div>
 
             {/* Call To Actions */}
-            <div className="flex flex-col sm:flex-row gap-4 pt-2 justify-start items-center w-full">
+            <div className="flex flex-col sm:flex-row gap-2.5 sm:gap-3 pt-1 justify-start items-center w-full">
               <a
                 href="/contact"
-                className="px-8 py-3.5 rounded-xl text-center text-sm font-bold text-black bg-cyan-400 hover:bg-cyan-350 transition-all shadow-lg hover:scale-[1.02] active:scale-95 duration-200 min-w-[180px] w-full sm:w-auto"
+                className="px-6 sm:px-8 py-3 rounded-xl text-center text-sm font-bold text-black bg-cyan-400 hover:bg-cyan-350 transition-all shadow-lg hover:scale-[1.02] active:scale-95 duration-200 min-w-[160px] w-full sm:w-auto"
               >
                 Inquire Now
               </a>
               <a
                 href="/services"
-                className="px-8 py-3.5 rounded-xl text-center text-sm font-bold text-cyan-200 bg-cyan-950/40 hover:bg-cyan-900/40 border border-cyan-500/25 hover:border-cyan-400/40 transition-all inline-flex items-center justify-center space-x-2.5 min-w-[180px] w-full sm:w-auto"
+                className="px-6 sm:px-8 py-3 rounded-xl text-center text-sm font-bold text-cyan-200 bg-cyan-950/40 hover:bg-cyan-900/40 border border-cyan-500/25 hover:border-cyan-400/40 transition-all inline-flex items-center justify-center space-x-2 min-w-[160px] w-full sm:w-auto"
               >
                 <span>Our Service Desk</span>
                 <ArrowRight className="w-4 h-4 text-cyan-400" />
@@ -217,57 +217,57 @@ export default function App() {
 
           </div>
 
-          {/* Right Floating Glassmorphism Hero Card with Parallax styling (45% width on desktop) */}
-          <div className="w-full md:w-[420px] lg:w-[460px] xl:w-[480px] md:max-w-none shrink-0 relative animate-float self-center md:self-start md:mt-0" id="hero-graphic-block">
+          {/* Right Floating Glassmorphism Hero Card */}
+          <div className="md:col-span-5 w-full max-w-md mx-auto md:max-w-none relative animate-float self-center" id="hero-graphic-block">
             {/* Ambient soft glow backdrop */}
-            <div className="absolute inset-0 bg-gradient-to-tr from-cyan-400/25 via-[#032B4E]/30 to-transparent rounded-3xl blur-2xl pointer-events-none" />
+            <div className="absolute inset-0 bg-gradient-to-tr from-cyan-400/25 via-[#032B4E]/30 to-transparent rounded-2xl sm:rounded-3xl blur-2xl pointer-events-none" />
             
-            {/* Elegant glass card wrapper */}
-            <div className="relative rounded-3xl border border-cyan-400/30 p-7 space-y-6 bg-gradient-to-b from-[#062440]/85 to-[#02182d]/95 backdrop-blur-xl overflow-hidden shadow-2xl">
+            {/* Glass card wrapper */}
+            <div className="relative rounded-2xl sm:rounded-3xl border border-cyan-400/30 p-4 sm:p-6 space-y-4 bg-gradient-to-b from-[#062440]/90 to-[#02182d]/95 backdrop-blur-xl overflow-hidden shadow-2xl">
               
               {/* Embedded soft watermark */}
-              <div className="absolute -bottom-8 -right-8 w-40 h-40 opacity-5 select-none pointer-events-none">
+              <div className="absolute -bottom-8 -right-8 w-36 h-36 opacity-5 select-none pointer-events-none">
                 <img src={logoUrl} alt="Watermark" className="w-full h-full object-cover rounded-full" />
               </div>
 
-              {/* Premium Hero Graphic Image above the logo block */}
-              <div className="w-full h-44 rounded-2xl overflow-hidden border border-cyan-400/20 shadow-lg relative group mb-2">
-                <a href="https://ibb.co/HphqWFt3" target="_blank" rel="noopener noreferrer" className="block w-full h-full">
+              {/* Graphic Image above logo block */}
+              <div className="w-full h-36 sm:h-40 lg:h-44 rounded-xl sm:rounded-2xl overflow-hidden border border-cyan-400/20 shadow-lg relative group mb-1 leading-none">
+                <a href="https://ibb.co/HphqWFt3" target="_blank" rel="noopener noreferrer" className="block w-full h-full leading-none">
                   <img 
                     src="https://i.ibb.co/x8F6pC1d/photo-1626785774573-4b799315345d.avif" 
                     alt="photo-1626785774573-4b799315345d" 
-                    className="w-full h-full object-cover group-hover:scale-105 transition-all duration-350"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-all duration-350 block"
                     referrerPolicy="no-referrer"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
                 </a>
               </div>
 
-              <div className="flex items-center justify-between border-b border-cyan-500/20 pb-4">
-                <div className="flex items-center space-x-3">
-                  <div className="w-11 h-11 rounded-xl overflow-hidden border border-cyan-400/20 bg-[#021323]">
+              <div className="flex items-center justify-between border-b border-cyan-500/20 pb-3">
+                <div className="flex items-center space-x-2.5">
+                  <div className="w-10 h-10 rounded-xl overflow-hidden border border-cyan-400/20 bg-[#021323] shrink-0">
                     <img src={logoUrl} alt="Walt Main Logo" className="w-full h-full object-cover" />
                   </div>
                   <div className="text-left">
-                    <h4 className="font-bold text-xs text-white uppercase tracking-wider">WALT DESIGNS HQ</h4>
+                    <h4 className="font-bold text-xs text-white uppercase tracking-wider leading-tight">WALT DESIGNS HQ</h4>
                     <span className="text-[9px] text-cyan-400 uppercase tracking-widest font-bold block leading-none mt-0.5">STUDIO DIRECTIVE</span>
                   </div>
                 </div>
 
-                {/* Animated active status badge */}
-                <div className="flex items-center space-x-2 bg-cyan-950/65 border border-cyan-500/15 px-2.5 py-1 rounded-full">
+                {/* Active status badge */}
+                <div className="flex items-center space-x-1.5 bg-cyan-950/65 border border-cyan-500/15 px-2.5 py-1 rounded-full shrink-0">
                   <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse" />
                   <span className="text-[10px] text-cyan-200 font-bold tracking-wider uppercase font-mono">ACTIVE</span>
                 </div>
               </div>
 
-              <div className="space-y-4 text-xs text-left">
-                <div className="space-y-1">
+              <div className="space-y-3 text-xs text-left">
+                <div className="space-y-0.5">
                   <p className="text-cyan-300/50 uppercase text-[9px] font-bold tracking-widest">Service Reach Bounds:</p>
-                  <p className="text-cyan-50 text-sm font-medium">Pan-India Integration (Bengal to Delhi NCR)</p>
+                  <p className="text-cyan-50 text-xs sm:text-sm font-medium">Pan-India Integration (Bengal to Delhi NCR)</p>
                 </div>
                 
-                <div className="space-y-1">
+                <div className="space-y-0.5">
                   <p className="text-cyan-300/50 uppercase text-[9px] font-bold tracking-widest font-mono">Primary Hub Coordinates:</p>
                   <p className="text-cyan-100 text-xs sm:text-sm">West Bengal Sector Zero Base</p>
                 </div>
@@ -281,14 +281,14 @@ export default function App() {
                   </div>
                 </div>
 
-                <div className="pt-4 border-t border-cyan-500/15 flex items-center justify-between font-mono text-[10px]">
+                <div className="pt-3 border-t border-cyan-500/15 flex items-center justify-between font-mono text-[10px]">
                   <span className="text-cyan-300/50 uppercase">REGISTRATION CODE:</span>
                   <span className="text-cyan-400 font-bold bg-cyan-950/40 border border-cyan-500/20 px-2 py-0.5 rounded">W-2026-ACTIVE</span>
                 </div>
               </div>
 
-              <div className="flex items-center space-x-3 bg-[#02182d]/70 p-3 rounded-2xl border border-cyan-500/10">
-                <TrendingUp className="w-5 h-5 text-cyan-400 shrink-0" />
+              <div className="flex items-center space-x-2.5 bg-[#02182d]/70 p-2.5 sm:p-3 rounded-xl sm:rounded-2xl border border-cyan-500/10">
+                <TrendingUp className="w-4 h-4 sm:w-5 sm:h-5 text-cyan-400 shrink-0" />
                 <p className="text-[11px] text-cyan-100/70 leading-normal text-left">
                   Over <span className="text-white font-bold">80+ Projects</span> deployed with absolute zero design lags.
                 </p>
@@ -296,14 +296,14 @@ export default function App() {
 
             </div>
 
-            {/* Micro floating accent elements for maximized depth */}
-            <div className="absolute -bottom-4 -left-4 bg-[#021323]/95 border border-cyan-400/25 px-4 py-2 rounded-xl shadow-xl z-20 flex items-center space-x-2 text-[11px] animate-float-reversed">
-              <span className="w-2.5 h-2.5 rounded-full bg-cyan-400 animate-ping" />
+            {/* Floating micro accent badges */}
+            <div className="absolute -bottom-2 -left-2 sm:-bottom-3 sm:-left-3 bg-[#021323]/95 border border-cyan-400/25 px-3 py-1.5 rounded-lg sm:rounded-xl shadow-xl z-20 flex items-center space-x-1.5 text-[10px] sm:text-[11px] animate-float-reversed">
+              <span className="w-2 h-2 rounded-full bg-cyan-400 animate-ping" />
               <span className="text-cyan-200 font-extrabold">Auto-Synced</span>
             </div>
 
-            <div className="absolute -top-4 -right-4 bg-[#021323]/95 border border-cyan-400/25 px-4 py-2 rounded-xl shadow-xl z-20 flex items-center space-x-2 text-[11px] animate-float">
-              <Sparkles className="w-4 h-4 text-cyan-400" />
+            <div className="absolute -top-2 -right-2 sm:-top-3 sm:-right-3 bg-[#021323]/95 border border-cyan-400/25 px-3 py-1.5 rounded-lg sm:rounded-xl shadow-xl z-20 flex items-center space-x-1.5 text-[10px] sm:text-[11px] animate-float">
+              <Sparkles className="w-3.5 h-3.5 text-cyan-400" />
               <span className="text-cyan-200 font-extrabold">Professional Standard</span>
             </div>
 
@@ -312,18 +312,18 @@ export default function App() {
         </div>
 
         {/* Premium Full-Width Responsive Grid Statistics Section */}
-        <div className="w-full max-w-none px-4 sm:px-10 md:px-12 lg:px-[70px] pb-12 sm:pb-16 relative z-10" id="hero-stats-wrapper">
-          <div className="max-w-4xl mx-auto w-full grid grid-cols-2 gap-4 sm:gap-6 mt-[30px] items-stretch hero-stats" id="premium-hero-stats">
+        <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 pt-2 pb-4 sm:pb-6 relative z-10" id="hero-stats-wrapper">
+          <div className="w-full grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 mt-2 sm:mt-3 items-stretch hero-stats" id="premium-hero-stats">
             {stats.map((stat, idx) => (
               <div 
                 key={idx} 
-                className="w-full min-h-[110px] p-5 sm:p-6 rounded-[20px] bg-gradient-to-br from-[#4A3B18]/90 via-[#2D230C]/95 to-[#1F1705]/95 border border-[#B3923B]/60 hover:border-[#F2D06B] text-[#FFF5D6] shadow-[0_8px_32px_rgba(0,0,0,0.4)] hover:shadow-[0_16px_32px_rgba(179,146,59,0.2)] hover:-translate-y-1 transition-all duration-300 flex flex-col items-start justify-center text-left select-none stat-card"
+                className="w-full min-h-[80px] sm:min-h-[95px] p-3.5 sm:p-5 rounded-xl sm:rounded-2xl bg-gradient-to-br from-[#4A3B18]/90 via-[#2D230C]/95 to-[#1F1705]/95 border border-[#B3923B]/60 hover:border-[#F2D06B] text-[#FFF5D6] shadow-[0_8px_24px_rgba(0,0,0,0.3)] hover:shadow-[0_12px_28px_rgba(179,146,59,0.2)] transition-all duration-300 flex flex-col items-start justify-center text-left select-none stat-card"
                 id={`stat-hero-${idx}`}
               >
-                <span className="text-2xl sm:text-3xl font-extrabold leading-[1] text-[#F3E5AB]">
+                <span className="text-xl sm:text-2xl lg:text-3xl font-extrabold leading-[1] text-[#F3E5AB]">
                   {stat.value}
                 </span>
-                <span className="text-[11px] sm:text-[13px] font-semibold tracking-[0.5px] uppercase mt-2 text-amber-100/90 leading-tight">
+                <span className="text-[10px] sm:text-[12px] font-semibold tracking-[0.5px] uppercase mt-1.5 text-amber-100/90 leading-tight">
                   {stat.label}
                 </span>
               </div>
@@ -333,10 +333,10 @@ export default function App() {
       </section>
 
       {/* Main Container below the Full Screen Hero */}
-      <main className="flex-1 relative z-10 w-full max-w-full py-8 overflow-x-hidden" id="home-main-section">
+      <main className="flex-1 relative z-10 w-full max-w-full overflow-x-hidden" id="home-main-section">
         
          {/* Core Business Values Banner */}
-        <section className="py-16 bg-[#022C22] border-y border-emerald-500/20 my-12 w-full max-w-full overflow-x-hidden" id="values-section">
+        <section className="py-10 sm:py-14 bg-[#022C22] border-y border-emerald-500/20 w-full max-w-full overflow-x-hidden" id="values-section">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-2 gap-3 sm:gap-6 md:gap-8">
               {values.map((v, idx) => {

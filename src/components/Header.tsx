@@ -17,7 +17,8 @@ export default function Header() {
     { name: 'Home', href: '/' },
     { name: 'Services', href: '/services' },
     { name: 'About Us', href: '/about' },
-    { name: 'Contact Us', href: '/contact' }
+    { name: 'Contact Us', href: '/contact' },
+    { name: 'Lime Green SPL 💚', href: '/lime-green-spl', isSpecial: true }
   ];
 
   const isActive = (href: string) => {
@@ -54,19 +55,21 @@ export default function Header() {
           </a>
  
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-8" id="desktop-nav">
+          <nav className="hidden md:flex items-center space-x-6" id="desktop-nav">
             {navLinks.map((link) => (
               <a
                 key={link.name}
                 href={link.href}
-                className={`relative px-1 py-2 font-display text-sm font-bold transition-colors duration-200 ${
-                  isActive(link.href)
-                    ? 'text-[#F3E5AB] font-extrabold'
-                    : 'text-amber-100/80 hover:text-white'
+                className={`relative font-display text-sm font-bold transition-all duration-200 ${
+                  link.isSpecial 
+                    ? 'px-3 py-1.5 rounded-full bg-lime-500/20 text-lime-300 border border-lime-400/50 hover:bg-lime-400 hover:text-black shadow-[0_0_15px_rgba(163,230,53,0.3)]'
+                    : isActive(link.href)
+                      ? 'px-1 py-2 text-[#F3E5AB] font-extrabold'
+                      : 'px-1 py-2 text-amber-100/80 hover:text-white'
                 }`}
               >
                 {link.name}
-                {isActive(link.href) && (
+                {isActive(link.href) && !link.isSpecial && (
                   <span className="absolute bottom-0 left-0 w-full h-[2.5px] bg-[#F3E5AB] rounded-full" />
                 )}
               </a>

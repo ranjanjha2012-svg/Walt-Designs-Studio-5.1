@@ -22,10 +22,10 @@ export default function About() {
         <div className="absolute top-30 right-[15%] w-[300px] h-[300px] bg-amber-500/3 blur-[90px] rounded-full" />
       </div>
 
-      <main className="flex-grow relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16" id="about-main-section">
+      <main className="flex-grow relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-10" id="about-main-section">
         
         {/* About Hero block with embedded logo watermark */}
-        <section className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center mb-24" id="about-hero">
+        <section className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8 lg:gap-10 items-center mb-10 sm:mb-14" id="about-hero">
           
           <div className="lg:col-span-7 space-y-6">
             <span className="font-mono text-xs uppercase text-amber-500 tracking-widest font-bold">The Creative Agency</span>
