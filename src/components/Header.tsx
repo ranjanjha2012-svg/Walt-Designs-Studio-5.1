@@ -1,15 +1,35 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Landmark, Compass, Sparkles } from 'lucide-react';
+import { Menu, X, Compass, Sparkles, LogIn, LogOut, LayoutDashboard, User as UserIcon } from 'lucide-react';
+import { onAuthStateChanged, signOut, User } from 'firebase/auth';
+import { auth } from '../firebase';
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const [currentPath, setCurrentPath] = useState('');
+  const [currentUser, setCurrentUser] = useState<User | null>(null);
+  const [authLoading, setAuthLoading] = useState(true);
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
       setCurrentPath(window.location.pathname);
     }
+
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      setCurrentUser(user);
+      setAuthLoading(false);
+    });
+
+    return () => unsubscribe();
   }, []);
+
+  const handleLogout = async () => {
+    try {
+      await signOut(auth);
+      window.location.href = '/login';
+    } catch (error) {
+      console.error('Header logout error:', error);
+    }
+  };
 
   const logoUrl = "https://i.ibb.co/rKxc0kTs/Whats-App-Image-2026-06-23-at-14-27-06.jpg";
 
@@ -17,8 +37,7 @@ export default function Header() {
     { name: 'Home', href: '/' },
     { name: 'Services', href: '/services' },
     { name: 'About Us', href: '/about' },
-    { name: 'Contact Us', href: '/contact' },
-    { name: 'Lime Green SPL 💚', href: '/lime-green-spl', isSpecial: true }
+    { name: 'Contact Us', href: '/contact' }
   ];
 
   const isActive = (href: string) => {
@@ -55,41 +74,92 @@ export default function Header() {
           </a>
  
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-6" id="desktop-nav">
+          <nav className="hidden md:flex items-center space-x-7" id="desktop-nav">
             {navLinks.map((link) => (
               <a
                 key={link.name}
                 href={link.href}
-                className={`relative font-display text-sm font-bold transition-all duration-200 ${
-                  link.isSpecial 
-                    ? 'px-3 py-1.5 rounded-full bg-lime-500/20 text-lime-300 border border-lime-400/50 hover:bg-lime-400 hover:text-black shadow-[0_0_15px_rgba(163,230,53,0.3)]'
-                    : isActive(link.href)
-                      ? 'px-1 py-2 text-[#F3E5AB] font-extrabold'
-                      : 'px-1 py-2 text-amber-100/80 hover:text-white'
+                className={`relative px-1 py-2 font-display text-sm font-bold transition-colors duration-200 ${
+                  isActive(link.href)
+                    ? 'text-[#F3E5AB] font-extrabold'
+                    : 'text-amber-100/80 hover:text-white'
                 }`}
               >
                 {link.name}
-                {isActive(link.href) && !link.isSpecial && (
+                {isActive(link.href) && (
                   <span className="absolute bottom-0 left-0 w-full h-[2.5px] bg-[#F3E5AB] rounded-full" />
                 )}
               </a>
             ))}
           </nav>
  
-          {/* Call To Action Right */}
-          <div className="hidden md:flex items-center space-x-4">
+          {/* Call To Action & Login Right */}
+          <div className="hidden md:flex items-center space-x-3" id="header-actions">
+            
+            {/* Login / Dashboard / Logout Buttons */}
+            {!authLoading && (
+              currentUser ? (
+                <div className="flex items-center space-x-2">
+                  <a
+                    href="/dashboard"
+                    className={`inline-flex items-center space-x-1.5 px-3.5 py-2 rounded-xl text-xs font-bold transition-all ${
+                      isActive('/dashboard')
+                        ? 'bg-amber-400 text-amber-950 shadow-md font-extrabold'
+                        : 'text-amber-100 bg-white/10 hover:bg-white/15 border border-amber-300/30'
+                    }`}
+                    id="header-dashboard-btn"
+                  >
+                    <LayoutDashboard className="w-3.5 h-3.5 text-amber-300" />
+                    <span>Dashboard</span>
+                  </a>
+                  <button
+                    onClick={handleLogout}
+                    title="Log Out"
+                    className="p-2 rounded-xl text-amber-200 hover:text-red-200 bg-black/25 hover:bg-red-950/60 border border-white/10 hover:border-red-400/40 transition-all cursor-pointer"
+                    id="header-logout-btn"
+                    aria-label="Logout"
+                  >
+                    <LogOut className="w-4 h-4" />
+                  </button>
+                </div>
+              ) : (
+                <a
+                  href="/login"
+                  className={`inline-flex items-center space-x-1.5 px-4 py-2 rounded-xl text-xs font-bold transition-all ${
+                    isActive('/login')
+                      ? 'bg-cyan-400 text-black shadow-md font-extrabold'
+                      : 'text-amber-100 hover:text-white bg-black/25 hover:bg-black/40 border border-[#B3923B]/40'
+                  }`}
+                  id="header-login-btn"
+                >
+                  <LogIn className="w-3.5 h-3.5 text-cyan-300" />
+                  <span>Login</span>
+                </a>
+              )
+            )}
+
             <a
               href="/contact"
-              className="relative inline-flex items-center justify-center px-5 py-2.5 rounded-xl overflow-hidden font-display text-xs font-bold text-amber-950 transition-all duration-300 bg-[#F3E5AB] hover:bg-[#FFF5D6] border border-[#B3923B]/30 hover:scale-[1.02] shadow-lg shadow-black/20 active:scale-95"
+              className="relative inline-flex items-center justify-center px-4.5 py-2.5 rounded-xl overflow-hidden font-display text-xs font-bold text-amber-950 transition-all duration-300 bg-[#F3E5AB] hover:bg-[#FFF5D6] border border-[#B3923B]/30 hover:scale-[1.02] shadow-lg shadow-black/20 active:scale-95"
               id="header-cta-btn"
             >
-              <Sparkles className="w-3.5 h-3.5 mr-2 animate-pulse text-amber-600" />
+              <Sparkles className="w-3.5 h-3.5 mr-1.5 animate-pulse text-amber-600" />
               Inquire Now
             </a>
           </div>
  
           {/* Mobile menu button */}
-          <div className="md:hidden flex items-center">
+          <div className="md:hidden flex items-center space-x-2">
+            {!authLoading && !currentUser && (
+              <a
+                href="/login"
+                className="inline-flex items-center space-x-1 px-3 py-1.5 rounded-lg text-xs font-bold text-amber-100 bg-black/30 border border-[#B3923B]/40"
+                id="mobile-header-login-quick"
+              >
+                <LogIn className="w-3.5 h-3.5 text-cyan-300" />
+                <span>Login</span>
+              </a>
+            )}
             <button
               onClick={() => setIsOpen(!isOpen)}
               className="inline-flex items-center justify-center p-2.5 rounded-xl text-amber-100 hover:text-white bg-white/10 border border-white/10 transition-all focus:outline-none"
@@ -110,7 +180,7 @@ export default function Header() {
               <a
                 key={link.name}
                 href={link.href}
-                className={`flex items-center justify-between px-4 py-3.5 rounded-xl font-display text-base font-bold transition-colors ${
+                className={`flex items-center justify-between px-4 py-3 rounded-xl font-display text-base font-bold transition-colors ${
                   isActive(link.href)
                     ? 'bg-white/10 text-[#F3E5AB] border-l-4 border-[#B3923B]'
                     : 'text-amber-100 hover:bg-white/5 hover:text-white'
@@ -121,7 +191,56 @@ export default function Header() {
                 <Compass className="w-4 h-4 opacity-75 text-amber-200" />
               </a>
             ))}
-            <div className="pt-4 px-4">
+
+            {/* Auth links in mobile menu */}
+            {currentUser ? (
+              <>
+                <a
+                  href="/dashboard"
+                  className={`flex items-center justify-between px-4 py-3 rounded-xl font-display text-base font-bold transition-colors ${
+                    isActive('/dashboard')
+                      ? 'bg-amber-400/20 text-[#F3E5AB] border-l-4 border-amber-400'
+                      : 'text-amber-100 hover:bg-white/5'
+                  }`}
+                  onClick={() => setIsOpen(false)}
+                >
+                  <div className="flex items-center space-x-2">
+                    <LayoutDashboard className="w-4 h-4 text-amber-300" />
+                    <span>Member Dashboard</span>
+                  </div>
+                  <span className="text-xs text-amber-300 font-mono">Active</span>
+                </a>
+                <button
+                  onClick={() => {
+                    setIsOpen(false);
+                    handleLogout();
+                  }}
+                  className="w-full flex items-center justify-between px-4 py-3 rounded-xl font-display text-base font-bold text-red-300 hover:bg-red-950/30 transition-colors"
+                >
+                  <div className="flex items-center space-x-2">
+                    <LogOut className="w-4 h-4 text-red-400" />
+                    <span>Log Out</span>
+                  </div>
+                </button>
+              </>
+            ) : (
+              <a
+                href="/login"
+                className={`flex items-center justify-between px-4 py-3 rounded-xl font-display text-base font-bold transition-colors ${
+                  isActive('/login')
+                    ? 'bg-cyan-400/20 text-cyan-200 border-l-4 border-cyan-400'
+                    : 'text-cyan-200 hover:bg-white/5'
+                }`}
+                onClick={() => setIsOpen(false)}
+              >
+                <div className="flex items-center space-x-2">
+                  <LogIn className="w-4 h-4 text-cyan-300" />
+                  <span>Login / Register</span>
+                </div>
+              </a>
+            )}
+
+            <div className="pt-3 px-1">
               <a
                 href="/contact"
                 className="w-full inline-flex items-center justify-center py-3.5 px-4 rounded-xl text-center text-sm font-bold text-amber-950 bg-[#F3E5AB] hover:bg-[#FFF5D6] transition-all cursor-pointer shadow-md"

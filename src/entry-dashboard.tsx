@@ -1,6 +1,6 @@
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
-import LimeGreenSPL from './pages/LimeGreenSPL';
+import Dashboard from './pages/Dashboard';
 import './index.css';
 import { register } from './registerServiceWorker';
 
@@ -8,6 +8,6 @@ register();
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <LimeGreenSPL />
+    <Dashboard />
   </StrictMode>,
 );
